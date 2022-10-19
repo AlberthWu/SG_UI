@@ -1,16 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { TabMenu } from "primereact/tabmenu";
 import { Dropdown } from "primereact/dropdown";
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
 import { Panel } from "primereact/panel";
 import { Ripple } from "primereact/ripple";
+import { Toolbar } from "primereact/toolbar";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { Button } from "primereact/button";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCoffee, faTruck, faDashboard, faSignIn, faBuilding, faTrailer, faUserGear, faPrint, faMoneyBill, faCalendarDay, faDollar, faTruckPickup, faHelicopter, faSignsPost, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const FormSuratJalan = () => {
+    let emptyProduct = {
+        id: null,
+        name: "",
+        image: null,
+        description: "",
+        category: null,
+        price: 0,
+        quantity: 0,
+        rating: 0,
+        inventoryStatus: "INSTOCK",
+    };
+
+    const [setProduct] = useState(null);
+    const [setSubmitted] = useState(null);
+    const [setProductDialog] = useState(false);
+    const dt = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [value6, setValue6] = useState("");
+
+    const openNew = () => {
+        setProduct(emptyProduct);
+        setSubmitted(false);
+        setProductDialog(true);
+    };
+
+    const exportCSV = () => {
+        dt.current.exportCSV();
+    };
+
+    const leftToolbarTemplate = () => {
+        return (
+            <React.Fragment>
+                <div className="my-2">
+                    <Button label="New" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
+                </div>
+            </React.Fragment>
+        );
+    };
+
+    const rightToolbarTemplate = () => {
+        return (
+            <React.Fragment>
+                <div>
+                    <Button label="Export" icon="pi pi-cloud-upload" className="p-button-help mr-2" onClick={exportCSV} />
+                </div>
+            </React.Fragment>
+        );
+    };
 
     const items = [
         { label: "Back", icon: "pi pi-angle-left" },
@@ -105,15 +155,24 @@ const FormSuratJalan = () => {
                     </div>
                 </div>
 
-                <Panel headerTemplate={template} toggleable>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </Panel>
+               
             </div>
+            <Panel headerTemplate={template} toggleable>
+                    <div className="grid crud-demo">
+                        <div className="col-12">
+                                <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
+                                <DataTable>
+                                    <Column field="code" header="Code" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="name" header="Name" headerStyle={{ width: "14%" }}></Column>
+                                </DataTable>
+                        </div>
+                    </div>
+                </Panel>
         </div>
     );
+}
+const comparisonFn = function (prevProps, nextProps) {
+    return prevProps.location.pathname === nextProps.location.pathname;
 };
 
-export default FormSuratJalan;
+export default React.memo(FormSuratJalan, comparisonFn);
