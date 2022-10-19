@@ -48,35 +48,35 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 300;
-  src: local(""), url("./fonts/NexaLight.ttf") format("ttf"), url("./fonts/NexaLight.ttf") format("ttf");
+  src: local(""), url("./../../fonts//Nexa-Light.woff2") format("woff2"), url("./../../fonts//Nexa-Light.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("./fonts/NexaRegular.ttf") format("ttf"), url("./fonts/NexaRegular.ttf") format("ttf");
+  src: local(""), url("./../../fonts//Nexa-Regular.woff2") format("woff2"), url("./../../fonts//Nexa-Regular.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
-  src: local(""), url("./fonts/NexaBook.ttf") format("ttf"), url("./fonts/NexaBook.ttf") format("ttf");
+  src: local(""), url("./../../fonts//Nexa-Medium.woff2") format("woff2"), url("./../../fonts//Nexa-Medium.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  src: local(""), url("./fonts/NexaBold.ttf") format("ttf"), url("./fonts/NexaBold.ttf") format("ttf");
+  src: local(""), url("./../../fonts//Nexa-SemiBold.woff2") format("woff2"), url("./../../fonts//Nexa-SemiBold.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  src: local(""), url("./fonts/NexaXBold.ttf") format("ttf"), url("./fonts/NexaXBold.ttf") format("ttf");
+  src: local(""), url("./../../fonts//Nexa-Bold.woff2") format("woff2"), url("./../../fonts//Nexa-Bold.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 * {

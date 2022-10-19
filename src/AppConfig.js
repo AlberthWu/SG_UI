@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { RadioButton } from 'primereact/radiobutton';
-import { InputSwitch } from 'primereact/inputswitch';
+// import { RadioButton } from 'primereact/radiobutton';
+// import { InputSwitch } from 'primereact/inputswitch';
 import classNames from 'classnames';
 import {Button} from "primereact/button";
 
 export const AppConfig = (props) => {
 
     const [active, setActive] = useState(false);
-    const [scale, setScale] = useState(14);
-    const [scales] = useState([12,13,14,15,16]);
+    const [scale] = useState(12);
+    // const [scales] = useState([12,13,14,15,16]);
     const [theme, setTheme] = useState('lara-light-indigo');
     const config = useRef(null);
     let outsideClickListener = useRef(null);
@@ -50,13 +50,13 @@ export const AppConfig = (props) => {
         return !(config.current.isSameNode(event.target) || config.current.contains(event.target));
     }
 
-    const decrementScale = () => {
-        setScale((prevState) => --prevState);
-    }
+    // const decrementScale = () => {
+    //     setScale((prevState) => --prevState);
+    // }
 
-    const incrementScale = () => {
-        setScale((prevState) => ++prevState);
-    }
+    // const incrementScale = () => {
+    //     setScale((prevState) => ++prevState);
+    // }
 
     useEffect(() => {
         document.documentElement.style.fontSize = scale + 'px';
@@ -122,7 +122,7 @@ export const AppConfig = (props) => {
             <Button className="p-button-danger layout-config-close p-button-rounded p-button-text" icon="pi pi-times" onClick={hideConfigurator}/>
 
             <div className="layout-config-content">
-                <h5 className="mt-0">Component Scale</h5>
+                {/* <h5 className="mt-0">Component Scale</h5>
                 <div className="config-scale">
                     <Button icon="pi pi-minus" onClick={decrementScale} className="p-button-text" disabled={scale === scales[0]} />
                     {
@@ -131,9 +131,9 @@ export const AppConfig = (props) => {
                         })
                     }
                     <Button icon="pi pi-plus" onClick={incrementScale} className="p-button-text" disabled={scale === scales[scales.length - 1]} />
-                </div>
+                </div> */}
 
-                <h5>Input Style</h5>
+                {/* <h5>Input Style</h5>
                 <div className="p-formgroup-inline">
                     <div className="field-radiobutton">
                         <RadioButton inputId="input_outlined" name="inputstyle" value="outlined" onChange={(e) => props.onInputStyleChange(e.value)} checked={props.inputStyle === 'outlined'} />
@@ -158,10 +158,10 @@ export const AppConfig = (props) => {
                         <RadioButton inputId="overlay" name="layoutMode" value="overlay" onChange={(e) => props.onLayoutModeChange(e.value)} checked={props.layoutMode === 'overlay'} />
                         <label htmlFor="overlay">Overlay</label>
                     </div>
-                </div>
+                </div> */}
 
                 <h5>Themes</h5>
-                <h6 className="mt-0">Bootstrap</h6>
+                {/* <h6 className="mt-0">Bootstrap</h6>
                 <div className="grid free-themes">
                     <div className="col-3 text-center">
                         <button className="p-link" onClick={e => changeTheme(e, 'bootstrap4-light-blue', 'light')}>
@@ -183,9 +183,9 @@ export const AppConfig = (props) => {
                             <img src="assets/layout/images/themes/bootstrap4-dark-purple.svg" alt="Bootstrap Dark Purple"/>
                         </button>
                     </div>
-                </div>
+                </div> */}
 
-                <h6>Material Design</h6>
+                {/* <h6>Material Design</h6>
                 <div className="grid free-themes">
                     <div className="col-3 text-center">
                         <button className="p-link" onClick={e => changeTheme(e, 'md-light-indigo', 'light')}>
@@ -231,7 +231,7 @@ export const AppConfig = (props) => {
                             <img src="assets/layout/images/themes/md-dark-deeppurple.svg" alt="Material Dark DeepPurple"/>
                         </button>
                     </div>
-                </div>
+                </div> */}
 
                 <h6>Tailwind</h6>
                 <div className="grid free-themes">
@@ -241,7 +241,7 @@ export const AppConfig = (props) => {
                         </button>
                     </div>
                 </div>
-
+{/* 
                 <h6>Fluent UI</h6>
                 <div className="grid free-themes">
                     <div className="col-3 text-center">
@@ -249,7 +249,7 @@ export const AppConfig = (props) => {
                             <img src="assets/layout/images/themes/fluent-light.png" alt="Fluent Light"/>
                         </button>
                     </div>
-                </div>
+                </div> */}
 
                 <h6>PrimeOne Design - 2022</h6>
                 <div className="grid free-themes">
@@ -295,7 +295,7 @@ export const AppConfig = (props) => {
                     </div>
                 </div>
 
-                <h6>PrimeOne Design - 2021</h6>
+                {/* <h6>PrimeOne Design - 2021</h6>
                 <div className="grid free-themes">
                     <div className="col-3 text-center">
                         <button className="p-link" onClick={e => changeTheme(e, 'saga-blue', 'light')}>
@@ -357,7 +357,7 @@ export const AppConfig = (props) => {
                             <img src="assets/layout/images/themes/arya-purple.png" alt="Arya Purple"/>
                         </button>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         </div>
