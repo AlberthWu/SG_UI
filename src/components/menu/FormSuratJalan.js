@@ -88,6 +88,8 @@ const FormSuratJalan = () => {
         );
     };
 
+    
+
     return (
         <div>
             <TabMenu model={items} className="mb-2" activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} />
@@ -162,8 +164,19 @@ const FormSuratJalan = () => {
                         <div className="col-12">
                                 <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
                                 <DataTable>
-                                    <Column field="code" header="Code" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="name" header="Name" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="No. SJ" header="No. SJ" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="No. PTO" header="No. PTO" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="No. DI" header="No. DI" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="Tgl Kirim" header="Tgl Kirim" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="Customer" header="Customer" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="Gudang" header="Gudang" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="Pabrik" header="Pabrik" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="Produk" header="Produk" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="No. PO" header="No. PO" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="Vol" header="Vol" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="Tgl. Terima" header="Tgl. Terima" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="Status" header="Status" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="UserID" header="UserID" headerStyle={{ width: "14%" }}></Column>
                                 </DataTable>
                         </div>
                     </div>
