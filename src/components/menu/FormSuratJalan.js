@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { TabMenu } from "primereact/tabmenu";
 import { Dropdown } from "primereact/dropdown";
 import { Calendar } from "primereact/calendar";
@@ -9,10 +9,14 @@ import { Toolbar } from "primereact/toolbar";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
+import * as Service from "../../service/PostsService";
+
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCoffee, faTruck, faDashboard, faSignIn, faBuilding, faTrailer, faUserGear, faPrint, faMoneyBill, faCalendarDay, faDollar, faTruckPickup, faHelicopter, faSignsPost, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const FormSuratJalan = () => {
+    const [models, setModels] = useState(null);
+
     let emptyProduct = {
         id: null,
         name: "",
@@ -25,12 +29,26 @@ const FormSuratJalan = () => {
         inventoryStatus: "INSTOCK",
     };
 
+    useEffect(() => {
+        GetAll();
+    });
+
+    const GetAll = async() => {
+        const response = await Service.GetAll();
+
+        setModels(response);
+    }
+
     const [setProduct] = useState(null);
+    // const [product, setProducts] = useState(emptyProduct);
     const [setSubmitted] = useState(null);
+    const [setDeleteProductDialog] = useState(false);
+    // const [setDeleteProductsDialog] = useState(false);
     const [setProductDialog] = useState(false);
     const dt = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [value6, setValue6] = useState("");
+    // const toast = useRef(null);
 
     const openNew = () => {
         setProduct(emptyProduct);
@@ -64,11 +82,10 @@ const FormSuratJalan = () => {
 
     const items = [
         { label: "Back", icon: "pi pi-angle-left" },
-        { label: "New", icon: "pi pi-fw pi-file" },
+        { label: "New", icon: "pi pi-fw pi-file"  },
         { label: "Save", icon: "pi pi-fw pi-save" },
         { label: "Delete", icon: "pi pi-fw pi-trash" },
         { label: "Print", icon: "pi pi-fw pi-print" },
-        { label: "Print Preview", icon: "pi pi-fw pi-eye" },
         { label: "Refresh", icon: "pi pi-fw pi-refresh" },
     ];
 
@@ -88,7 +105,40 @@ const FormSuratJalan = () => {
         );
     };
 
-    
+    const editProduct = (product) => {
+        setProduct({...product});
+        setProductDialog(true);
+    };
+
+    const confirmDeleteProduct = (product) => {
+        setProduct(product);
+        setDeleteProductDialog(true);
+    };
+
+    // const deleteProduct = () => {
+    //     let _products = products.filter(val => val.id !== product.id);
+    //     setProducts(_products);
+    //     setDeleteProductDialog(false);
+    //     setProduct(emptyProduct);
+    //     toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+    // }
+
+    // const hideDeleteProductDialog = () => {
+    //     setDeleteProductDialog(false);
+    // }
+
+    // const hideDeleteProductsDialog = () => {
+    //     setDeleteProductsDialog(false);
+    // }
+
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <React.Fragment>
+                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
+                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} />
+            </React.Fragment>
+        );
+    }
 
     return (
         <div>
@@ -112,27 +162,21 @@ const FormSuratJalan = () => {
                         <Calendar inputId="calendar" value={value6} onChange={(e) => setValue6(e.value)} className="p-invalid" showIcon />
                     </div>
                 </div>
-
-                <div className="grid">
-                    <div className="col-12 md:col-12 lg-6">
-                        <div className="field grid">
-                            <label htmlFor="loket" className="col-6 mb-0 md:col-2 md:mb-0">
-                                Loket
-                            </label>
-                            <div className="col-12 md:col-3">
-                                <Dropdown id="Loket" optionLabel="Business"></Dropdown>
-                            </div>
-                        </div>
+                
+                <div className="field grid">
+                    <label htmlFor="loket" className="col-6 mb-0 md:col-2 md:mb-0">
+                        Loket
+                    </label>
+                    <div className="col-12 md:col-3">
+                        <Dropdown id="Loket" optionLabel="Business"></Dropdown>
                     </div>
-                    <div className="col-12 md:col-12 lg-6">
-                        <div className="field grid">
-                            <label htmlFor="shift" className="col-6 mb-0 md:col-2 md:mb-0">
-                                Shift
-                            </label>
-                            <div className="col-12 md:col-3">
-                                <Dropdown id="Shift" optionLabel="Business"></Dropdown>
-                            </div>
-                        </div>
+                </div>
+                <div className="field grid">
+                    <label htmlFor="shift" className="col-6 mb-0 md:col-2 md:mb-0">
+                        Shift
+                    </label>
+                    <div className="col-12 md:col-3">
+                        <Dropdown id="Shift" optionLabel="Business"></Dropdown>
                     </div>
                 </div>
 
@@ -157,14 +201,15 @@ const FormSuratJalan = () => {
                     </div>
                 </div>
 
-               
             </div>
             <Panel headerTemplate={template} toggleable>
                     <div className="grid crud-demo">
                         <div className="col-12">
                                 <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                                <DataTable>
-                                    <Column field="No. SJ" header="No. SJ" headerStyle={{ width: "14%" }}></Column>
+                                <DataTable value={models} paginator rows={10}>
+                                    <Column field="title" header="Title" headerStyle={{ width: "%" }} filter sortable></Column>
+                                    <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
+                                    {/* <Column field="No. SJ" header="No. SJ" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="No. PTO" header="No. PTO" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="No. DI" header="No. DI" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="Tgl Kirim" header="Tgl Kirim" headerStyle={{ width: "14%" }}></Column>
@@ -176,7 +221,7 @@ const FormSuratJalan = () => {
                                     <Column field="Vol" header="Vol" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="Tgl. Terima" header="Tgl. Terima" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="Status" header="Status" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="UserID" header="UserID" headerStyle={{ width: "14%" }}></Column>
+                                    <Column field="UserID" header="UserID" headerStyle={{ width: "14%" }}></Column> */}
                                 </DataTable>
                         </div>
                     </div>
