@@ -2,7 +2,7 @@ import Axios from "axios";
 
 export const GetAll = async() => {
     try {
-        const response = await Axios.get("http://10.100.2.235:3004/posts");
+        const response = await Axios.get("https://jsonplaceholder.typicode.com/posts");
 
         return response.data;
     } catch (error) {
