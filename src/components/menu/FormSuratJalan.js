@@ -4,17 +4,20 @@ import { Dropdown } from "primereact/dropdown";
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
 import { Panel } from "primereact/panel";
+import { Toast } from 'primereact/toast';
 import { Ripple } from "primereact/ripple";
 import { Toolbar } from "primereact/toolbar";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
+import { Dialog } from 'primereact/dialog';
 import * as Service from "../../service/PostsService";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCoffee, faTruck, faDashboard, faSignIn, faBuilding, faTrailer, faUserGear, faPrint, faMoneyBill, faCalendarDay, faDollar, faTruckPickup, faHelicopter, faSignsPost, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const FormSuratJalan = () => {
+    const toast = useRef(null);
     const [models, setModels] = useState(null);
 
     let emptyProduct = {
@@ -33,16 +36,16 @@ const FormSuratJalan = () => {
         GetAll();
     });
 
-    const GetAll = async() => {
+    const GetAll = async () => {
         const response = await Service.GetAll();
 
         setModels(response);
-    }
+    };
 
-    const [setProduct] = useState(null);
-    // const [product, setProducts] = useState(emptyProduct);
+    const [product, setProduct] = useState(null);
+    const [products, setProducts] = useState(emptyProduct);
     const [setSubmitted] = useState(null);
-    const [setDeleteProductDialog] = useState(false);
+    const [deleteProductDialog, setDeleteProductDialog] = useState(false);
     // const [setDeleteProductsDialog] = useState(false);
     const [setProductDialog] = useState(false);
     const dt = useRef(null);
@@ -64,7 +67,7 @@ const FormSuratJalan = () => {
         return (
             <React.Fragment>
                 <div className="my-2">
-                    <Button label="New" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
+                    <Button icon="pi pi-plus" className="p-button-rounded p-button-text" aria-label="New" onClick={openNew} />
                 </div>
             </React.Fragment>
         );
@@ -80,9 +83,16 @@ const FormSuratJalan = () => {
         );
     };
 
+    const deleteProductDialogFooter = (
+        <React.Fragment>
+            <Button label="No" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductDialog} />
+            <Button label="Yes" icon="pi pi-check" className="p-button-text" onClick={deleteProduct} />
+        </React.Fragment>
+    );
+
     const items = [
         { label: "Back", icon: "pi pi-angle-left" },
-        { label: "New", icon: "pi pi-fw pi-file"  },
+        { label: "New", icon: "pi pi-fw pi-file" },
         { label: "Save", icon: "pi pi-fw pi-save" },
         { label: "Delete", icon: "pi pi-fw pi-trash" },
         { label: "Print", icon: "pi pi-fw pi-print" },
@@ -106,7 +116,7 @@ const FormSuratJalan = () => {
     };
 
     const editProduct = (product) => {
-        setProduct({...product});
+        setProduct({ ...product });
         setProductDialog(true);
     };
 
@@ -115,17 +125,17 @@ const FormSuratJalan = () => {
         setDeleteProductDialog(true);
     };
 
-    // const deleteProduct = () => {
-    //     let _products = products.filter(val => val.id !== product.id);
-    //     setProducts(_products);
-    //     setDeleteProductDialog(false);
-    //     setProduct(emptyProduct);
-    //     toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-    // }
+    const deleteProduct = () => {
+        let _products = products.filter(val => val.id !== product.id);
+        setProducts(_products);
+        setDeleteProductDialog(false);
+        setProduct(emptyProduct);
+        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+    }
 
-    // const hideDeleteProductDialog = () => {
-    //     setDeleteProductDialog(false);
-    // }
+    const hideDeleteProductDialog = () => {
+        setDeleteProductDialog(false);
+    }
 
     // const hideDeleteProductsDialog = () => {
     //     setDeleteProductsDialog(false);
@@ -134,11 +144,11 @@ const FormSuratJalan = () => {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
-                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} />
+                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mb-2" onClick={() => editProduct(rowData)} />
+                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning mb-2" onClick={() => confirmDeleteProduct(rowData)} />
             </React.Fragment>
         );
-    }
+    };
 
     return (
         <div>
@@ -162,7 +172,7 @@ const FormSuratJalan = () => {
                         <Calendar inputId="calendar" value={value6} onChange={(e) => setValue6(e.value)} className="p-invalid" showIcon />
                     </div>
                 </div>
-                
+
                 <div className="field grid">
                     <label htmlFor="loket" className="col-6 mb-0 md:col-2 md:mb-0">
                         Loket
@@ -200,16 +210,16 @@ const FormSuratJalan = () => {
                         <InputText id="Plat No" type="text" />
                     </div>
                 </div>
-
             </div>
             <Panel headerTemplate={template} toggleable>
-                    <div className="grid crud-demo">
-                        <div className="col-12">
-                                <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                                <DataTable value={models} paginator rows={10}>
-                                    <Column field="title" header="Title" headerStyle={{ width: "%" }} filter sortable></Column>
-                                    <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }}></Column>
-                                    {/* <Column field="No. SJ" header="No. SJ" headerStyle={{ width: "14%" }}></Column>
+                <div className="grid crud-demo">
+                    <div className="col-12">
+                        <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
+                        <DataTable value={models} paginator rows={10}>
+                            <Column field="title" header="Title" headerStyle={{ width: "%" }} filter sortable></Column>
+                            <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
+                            <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: "8rem" }}></Column>
+                            {/* <Column field="No. SJ" header="No. SJ" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="No. PTO" header="No. PTO" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="No. DI" header="No. DI" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="Tgl Kirim" header="Tgl Kirim" headerStyle={{ width: "14%" }}></Column>
@@ -222,13 +232,23 @@ const FormSuratJalan = () => {
                                     <Column field="Tgl. Terima" header="Tgl. Terima" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="Status" header="Status" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="UserID" header="UserID" headerStyle={{ width: "14%" }}></Column> */}
-                                </DataTable>
-                        </div>
+                        </DataTable>
+                        <Dialog visible={deleteProductDialog} style={{ width: "450px" }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
+                            <div className="confirmation-content">
+                                <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: "2rem" }} />
+                                {product && (
+                                    <span>
+                                        Are you sure you want to delete <b>{product.name}</b>?
+                                    </span>
+                                )}
+                            </div>
+                        </Dialog>
                     </div>
-                </Panel>
+                </div>
+            </Panel>
         </div>
     );
-}
+};
 const comparisonFn = function (prevProps, nextProps) {
     return prevProps.location.pathname === nextProps.location.pathname;
 };
