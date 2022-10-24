@@ -37,6 +37,9 @@ import ListingSampurnaGroup from './pages/ListingSampurnaGroup';
 
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faFile, faBuilding } from "@fortawesome/free-regular-svg-icons";
 
 import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';
@@ -172,6 +175,144 @@ const App = () => {
                 { label: 'Bank', icon: 'pi pi-fw pi-building', to: "/bank"},
                 { label: 'LayoutDesign', icon: 'pi pi-fw pi-building', to: "/layoutdesign"},
                 { label: 'FormSuratJalan', icon: 'pi pi-fw pi-card', to: "/FormSuratJalan"},
+            ]
+        },
+
+        {
+            label: 'SALES',
+            items: [
+                {
+                    label: 'MASTER', icon: "fa-regular fa-file",
+                    items: [
+                        {
+                            label: 'Pool', icon: 'pi pi-fw pi-home',
+                        },
+                        {
+                            label: 'Product', icon: 'pi pi-fw pi-car',
+                        },
+                        {
+                            label: 'Customer', icon: 'pi pi-fw pi-users',
+                        },
+                        {
+                            label: 'Price', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'UJT', icon: 'pi pi-fw pi-credit-card',
+                        },
+                    ]},
+                    {
+                    label: 'OFFICE', icon: 'fa-regular fa-building',
+                    items: [
+                        {
+                            label: 'Invoice Penjualan', icon: 'pi pi-fw pi-file',
+                        },
+                        {
+                            label: 'Generate Nomor Manual', icon: 'pi pi-fw pi-pencil',
+                        },
+                        {
+                            label: 'Invoice Manual', icon: 'pi pi-fw pi-file',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-fw pi-file',
+                        },
+                    ]},
+                    {
+                    label: 'DUMPTRUCK', icon: 'pi pi-fw pi-car',
+                    items: [
+                        {
+                            label: 'UJT', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'NON UJT', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-fw pi-file',
+                        },
+                    ]},
+                    {
+                    label: 'CARGO', icon: 'pi pi-fw pi-car',
+                    items: [
+                        {
+                            label: 'UJT', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'NON UJT', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-fw pi-file',
+                        },
+                    ]},
+                    {
+                    label: 'MIXER', icon: 'pi pi-fw pi-car',
+                    items: [
+                        {
+                            label: 'UJT', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'NON UJT', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-fw pi-file',
+                        },
+                    ]
+                },
+            ]
+        },
+
+        {
+            label: 'FLEET',
+            items: [
+                {
+                    label: 'MASTER', icon: 'fa-regular fa-file',
+                    items: [
+                        {
+                            label: 'Jenis Truk', icon: 'pi pi-fw pi-car',
+                        },
+                        {
+                            label: 'Truk', icon: 'pi pi-fw pi-car',
+                        },
+                    ]},
+                    {
+                    label: 'POOL', icon: 'pi pi-fw pi-home',
+                    items: [
+                        {
+                            label: 'Formasi Truk', icon: 'pi pi-fw pi-car',
+                        },
+                    ]
+                },
+            ]
+        },
+        
+        {
+            label: 'FINANCE',
+            items: [
+                {
+                    label: 'OFFICE', icon: 'fa-regular fa-building',
+                    items: [
+                        {
+                            label: 'Invoice Finance', icon: 'pi pi-fw pi-file',
+                        },
+                        {
+                            label: 'Input Kas', icon: 'pi pi-fw pi-file',
+                        },
+                        {
+                            label: 'Kasir', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-fw pi-file',
+                        },
+                    ]},
+                    {
+                    label: 'POOL', icon: 'pi pi-fw pi-home',
+                    items: [
+                        {
+                            label: 'Kasir', icon: 'pi pi-fw pi-money-bill',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-fw pi-file',
+                        },
+                    ]
+                },
             ]
         },
 
