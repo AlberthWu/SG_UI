@@ -4,6 +4,13 @@ import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import {Ripple} from "primereact/ripple";
 import { Badge } from 'primereact/badge';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { far } from "@fortawesome/free-regular-svg-icons";
+
+library.add(
+    far
+);
 
 const AppSubmenu = (props) => {
 
@@ -47,7 +54,7 @@ const AppSubmenu = (props) => {
 
         return (
             <React.Fragment>
-                <i className={item.icon}></i>
+                <FontAwesomeIcon icon={item.icon}></FontAwesomeIcon>
                 <span>{item.label}</span>
                 {submenuIcon}
                 {badge}

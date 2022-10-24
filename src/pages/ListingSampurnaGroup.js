@@ -178,11 +178,11 @@ const ListingSampurnaGroup = () => {
         toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
     }
 
-    const onCategoryChange = (e) => {
-        let _product = {...product};
-        _product['category'] = e.value;
-        setProduct(_product);
-    }
+    // const onCategoryChange = (e) => {
+    //     let _product = {...product};
+    //     _product['category'] = e.value;
+    //     setProduct(_product);
+    // }
 
     const onInputChange = (e, name) => {
         const val = (e.target && e.target.value) || '';
