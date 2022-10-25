@@ -176,6 +176,144 @@ const App = () => {
         },
 
         {
+            label: 'SALES',
+            items: [
+                {
+                    label: 'Master', icon: "pi pi-globe",
+                    items: [
+                        {
+                            label: 'Pool', icon: 'CiHome',
+                        },
+                        {
+                            label: 'Product', icon: 'CiBoxes',
+                        },
+                        {
+                            label: 'Customer', icon: 'pi pi-users',
+                        },
+                        {
+                            label: 'Price', icon: 'CiCoins1',
+                        },
+                        {
+                            label: 'UJT', icon: 'CiMoneyBill',
+                        },
+                    ]},
+                    {
+                    label: 'Office', icon: 'pi pi-building',
+                    items: [
+                        {
+                            label: 'Invoice Penjualan', icon: 'CiFileOn',
+                        },
+                        {
+                            label: 'Generate Nomor Manual', icon: 'CiEdit',
+                        },
+                        {
+                            label: 'Invoice Manual', icon: 'CiFileOn',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-file-excel',
+                        },
+                    ]},
+                    {
+                    label: 'Dumptruck', icon: 'CiDeliveryTruck',
+                    items: [
+                        {
+                            label: 'UJT', icon: 'CiMoneyBill',
+                        },
+                        {
+                            label: 'NON UJT', icon: 'CiCreditCardOff',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-file-excel',
+                        },
+                    ]},
+                    {
+                    label: 'Cargo', icon: 'CiDeliveryTruck',
+                    items: [
+                        {
+                            label: 'UJT', icon: 'CiMoneyBill',
+                        },
+                        {
+                            label: 'NON UJT', icon: 'CiCreditCardOff',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-file-excel',
+                        },
+                    ]},
+                    {
+                    label: 'Mixer', icon: 'CiDeliveryTruck',
+                    items: [
+                        {
+                            label: 'UJT', icon: 'CiMoneyBill',
+                        },
+                        {
+                            label: 'NON UJT', icon: 'CiCreditCardOff',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-file-excel',
+                        },
+                    ]
+                },
+            ]
+        },
+
+        {
+            label: 'FLEET',
+            items: [
+                {
+                    label: 'Master', icon: 'pi pi-globe',
+                    items: [
+                        {
+                            label: 'Jenis Truk', icon: 'CiDeliveryTruck',
+                        },
+                        {
+                            label: 'Truk', icon: 'CiDeliveryTruck',
+                        },
+                    ]},
+                    {
+                    label: 'Pool', icon: 'CiHome',
+                    items: [
+                        {
+                            label: 'Formasi Truk', icon: 'CiDeliveryTruck',
+                        },
+                    ]
+                },
+            ]
+        },
+        
+        {
+            label: 'FINANCE',
+            items: [
+                {
+                    label: 'Office', icon: 'pi pi-building',
+                    items: [
+                        {
+                            label: 'Invoice Finance', icon: 'CiFileOn',
+                        },
+                        {
+                            label: 'Input Kas', icon: 'CiWallet',
+                        },
+                        {
+                            label: 'Kasir', icon: 'CiMoneyBill',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-file-excel',
+                        },
+                    ]},
+                    {
+                    label: 'Pool', icon: 'CiHome',
+                    items: [
+                        {
+                            label: 'Kasir', icon: 'CiMoneyBill',
+                        },
+                        {
+                            label: 'Report', icon: 'pi pi-file-excel',
+                        },
+                    ]
+                },
+            ]
+        },
+
+        {
             label: 'UI Components', icon: 'pi pi-fw pi-sitemap',
             items: [
                 { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', to: '/formlayout' },

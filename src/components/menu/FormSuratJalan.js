@@ -11,6 +11,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { Dialog } from 'primereact/dialog';
+// import { FileUpload } from 'primereact/fileupload';
 import * as Service from "../../service/PostsService";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,6 +60,72 @@ const FormSuratJalan = () => {
         setProductDialog(true);
     };
 
+    // const ToastDemo = () => {
+    //     const toastBC = useRef(null);
+
+    // const showConfirm = () => {
+    //     toastBC.current.show({ severity: 'warn', sticky: true, content: (
+    //         <div className="flex flex-column" style={{flex: '1'}}>
+    //             <div className="text-center">
+    //                 <i className="pi pi-exclamation-triangle" style={{fontSize: '3rem'}}></i>
+    //                 <h4>Are you sure?</h4>
+    //                 <p>Confirm to proceed</p>
+    //             </div>
+    //             <div className="grid p-fluid">
+    //                 <div className="col-6">
+    //                     <Button type="button" label="Yes" className="p-button-success" />
+    //                 </div>
+    //                 <div className="col-6">
+    //                     <Button type="button" label="No" className="p-button-secondary" />
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     ) });
+    // }
+
+
+    // const createId = () => {
+    //     let id = '';
+    //     let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    //     for (let i = 0; i < 5; i++) {
+    //         id += chars.charAt(Math.floor(Math.random() * chars.length));
+    //     }
+    //     return id;
+    // }
+
+    // const importCSV = (e) => {
+    //     const file = e.files[0];
+    //     const reader = new FileReader();
+    //     reader.onload = (e) => {
+    //         const csv = e.target.result;
+    //         const data = csv.split('\n');
+
+    //         // Prepare DataTable
+    //         const cols = data[0].replace(/['"]+/g, '').split(',');
+    //         data.shift();
+
+    //         const importedData = data.map(d => {
+    //             d = d.split(',');
+    //             const processedData = cols.reduce((obj, c, i) => {
+    //                 c = c === 'Status' ? 'inventoryStatus' : (c === 'Reviews' ? 'rating' : c.toLowerCase());
+    //                 obj[c] = d[i].replace(/['"]+/g, '');
+    //                 (c === 'price' || c === 'rating') && (obj[c] = parseFloat(obj[c]));
+    //                 return obj;
+    //             }, {});
+
+    //             processedData['id'] = createId();
+    //             return processedData;
+    //         });
+
+    //         const _products = [...products, ...importedData];
+
+    //         setProducts(_products);
+    //     };
+
+    //     reader.readAsText(file, 'UTF-8');
+    // }
+
+
     const exportCSV = () => {
         dt.current.exportCSV();
     };
@@ -67,7 +134,7 @@ const FormSuratJalan = () => {
         return (
             <React.Fragment>
                 <div className="my-2">
-                    <Button icon="pi pi-plus" className="p-button-rounded p-button-text" aria-label="New" onClick={openNew} />
+                    <Button label="New" icon="pi pi-plus" className="p-button-raised p-button-text" aria-label="New" onClick={openNew} />
                 </div>
             </React.Fragment>
         );
@@ -77,6 +144,7 @@ const FormSuratJalan = () => {
         return (
             <React.Fragment>
                 <div>
+                    {/* <FileUpload mode="basic" name="demo[]" auto url="https://primefaces.org/primereact/showcase/upload.php" accept=".csv" chooseLabel="Import" className="mr-2 inline-block" onUpload={importCSV} /> */}
                     <Button label="Export" icon="pi pi-cloud-upload" className="p-button-help mr-2" onClick={exportCSV} />
                 </div>
             </React.Fragment>
@@ -209,6 +277,7 @@ const FormSuratJalan = () => {
                     <div className="col-12 md:col-3">
                         <InputText id="Plat No" type="text" />
                     </div>
+                    {/* <div><Button type="button" onClick={showConfirm} label="Confirm" className="ui-button-warning" /></div> */}
                 </div>
             </div>
             <Panel headerTemplate={template} toggleable>
