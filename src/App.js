@@ -165,7 +165,7 @@ const App = () => {
         {
             label: 'Home',
             items: [{
-                label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/'
+                label: 'Dashboard', icon: 'CiHome', to: '/'
             }]
         },
 
@@ -182,7 +182,7 @@ const App = () => {
             label: 'SALES',
             items: [
                 {
-                    label: 'MASTER', icon: "fa-regular fa-file",
+                    label: 'Master', icon: "CiHome",
                     items: [
                         {
                             label: 'Pool', icon: 'pi pi-fw pi-home',
@@ -201,7 +201,7 @@ const App = () => {
                         },
                     ]},
                     {
-                    label: 'OFFICE', icon: 'fa-regular fa-building',
+                    label: 'Office', icon: 'fa-regular fa-building',
                     items: [
                         {
                             label: 'Invoice Penjualan', icon: 'pi pi-fw pi-file',
@@ -217,7 +217,7 @@ const App = () => {
                         },
                     ]},
                     {
-                    label: 'DUMPTRUCK', icon: 'pi pi-fw pi-car',
+                    label: 'Dumptruck', icon: 'pi pi-fw pi-car',
                     items: [
                         {
                             label: 'UJT', icon: 'pi pi-fw pi-money-bill',
@@ -230,7 +230,7 @@ const App = () => {
                         },
                     ]},
                     {
-                    label: 'CARGO', icon: 'pi pi-fw pi-car',
+                    label: 'Cargo', icon: 'pi pi-fw pi-car',
                     items: [
                         {
                             label: 'UJT', icon: 'pi pi-fw pi-money-bill',

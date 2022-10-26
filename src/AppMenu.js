@@ -4,13 +4,14 @@ import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import {Ripple} from "primereact/ripple";
 import { Badge } from 'primereact/badge';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { far } from "@fortawesome/free-regular-svg-icons";
+import * as CiIcons from "react-icons/ci";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { library } from "@fortawesome/fontawesome-svg-core"
+// import { far } from "@fortawesome/free-regular-svg-icons";
 
-library.add(
-    far
-);
+// library.add(
+//     far
+// );
 
 const AppSubmenu = (props) => {
 
@@ -47,6 +48,20 @@ const AppSubmenu = (props) => {
             event.target.click();
         }
     }
+    const CustomCiIcon = ({name}) => {
+        const CircumIcons = CiIcons[name];
+        if (!CircumIcons) return <p></p>
+        return <CircumIcons/>;
+    };
+    
+    const setIconMenu=(icon) =>{
+        const iconType = icon.substring(0,2).toLowerCase();
+        if (iconType === "pi"){
+            return <i className={icon}></i>
+        } else if (iconType === "ci"){
+            return <CustomCiIcon name={icon}/>
+        }
+    };
 
     const renderLinkContent = (item) => {
         let submenuIcon = item.items && <i className="pi pi-fw pi-angle-down menuitem-toggle-icon"></i>;
@@ -54,7 +69,7 @@ const AppSubmenu = (props) => {
 
         return (
             <React.Fragment>
-                <FontAwesomeIcon icon={item.icon}></FontAwesomeIcon>
+                {setIconMenu(item.icon)}
                 <span>{item.label}</span>
                 {submenuIcon}
                 {badge}
@@ -122,4 +137,4 @@ export const AppMenu = (props) => {
             </a>
         </div>
     );
-}
+};
