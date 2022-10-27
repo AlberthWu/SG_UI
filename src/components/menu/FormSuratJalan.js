@@ -48,10 +48,9 @@ const FormSuratJalan = () => {
     const [deleteProductDialog, setDeleteProductDialog] = useState(false);
     // const [setDeleteProductsDialog] = useState(false);
     const [setProductDialog] = useState(false);
-    const dt = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [value6, setValue6] = useState("");
-    // const toast = useRef(null);
+    const dt = useRef(null);
 
     const openNew = () => {
         setProduct(emptyProduct);
@@ -59,15 +58,82 @@ const FormSuratJalan = () => {
         setProductDialog(true);
     };
 
-    const exportCSV = () => {
-        dt.current.exportCSV();
+    // const ToastDemo = () => {
+    //     const toastBC = useRef(null);
+
+    // const showConfirm = () => {
+    //     toastBC.current.show({ severity: 'warn', sticky: true, content: (
+    //         <div className="flex flex-column" style={{flex: '1'}}>
+    //             <div className="text-center">
+    //                 <i className="pi pi-exclamation-triangle" style={{fontSize: '3rem'}}></i>
+    //                 <h4>Are you sure?</h4>
+    //                 <p>Confirm to proceed</p>
+    //             </div>
+    //             <div className="grid p-fluid">
+    //                 <div className="col-6">
+    //                     <Button type="button" label="Yes" className="p-button-success" />
+    //                 </div>
+    //                 <div className="col-6">
+    //                     <Button type="button" label="No" className="p-button-secondary" />
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     ) });
+    // }
+
+
+    // const createId = () => {
+    //     let id = '';
+    //     let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    //     for (let i = 0; i < 5; i++) {
+    //         id += chars.charAt(Math.floor(Math.random() * chars.length));
+    //     }
+    //     return id;
+    // }
+
+    // const importCSV = (e) => {
+    //     const file = e.files[0];
+    //     const reader = new FileReader();
+    //     reader.onload = (e) => {
+    //         const csv = e.target.result;
+    //         const data = csv.split('\n');
+
+    //         // Prepare DataTable
+    //         const cols = data[0].replace(/['"]+/g, '').split(',');
+    //         data.shift();
+
+    //         const importedData = data.map(d => {
+    //             d = d.split(',');
+    //             const processedData = cols.reduce((obj, c, i) => {
+    //                 c = c === 'Status' ? 'inventoryStatus' : (c === 'Reviews' ? 'rating' : c.toLowerCase());
+    //                 obj[c] = d[i].replace(/['"]+/g, '');
+    //                 (c === 'price' || c === 'rating') && (obj[c] = parseFloat(obj[c]));
+    //                 return obj;
+    //             }, {});
+
+    //             processedData['id'] = createId();
+    //             return processedData;
+    //         });
+
+    //         const _products = [...products, ...importedData];
+
+    //         setProducts(_products);
+    //     };
+
+    //     reader.readAsText(file, 'UTF-8');
+    // }
+
+
+    const exportCSV = (selectionOnly) => {
+        dt.current.exportCSV({ selectionOnly });
     };
+
 
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
                 <div className="my-2">
-                    <Button icon="pi pi-plus" className="p-button-rounded p-button-text" aria-label="New" onClick={openNew} />
+                    <Button label="New" icon="pi pi-plus-circle" className="p-button-raised p-button-success p-button-text" onClick={openNew} />
                 </div>
             </React.Fragment>
         );
@@ -77,7 +143,7 @@ const FormSuratJalan = () => {
         return (
             <React.Fragment>
                 <div>
-                    <Button label="Export" icon="pi pi-cloud-upload" className="p-button-help mr-2" onClick={exportCSV} />
+                    <Button label="Export" icon="pi pi-cloud-upload" label="Export" className="p-button-raised p-button-info p-button-text mr-2" onClick={exportCSV} />
                 </div>
             </React.Fragment>
         );
@@ -112,6 +178,7 @@ const FormSuratJalan = () => {
                 </button>
                 <span className={titleClassName}>Surat Jalan</span>
             </div>
+            
         );
     };
 
@@ -209,16 +276,17 @@ const FormSuratJalan = () => {
                     <div className="col-12 md:col-3">
                         <InputText id="Plat No" type="text" />
                     </div>
+                    {/* <div><Button type="button" onClick={showConfirm} label="Confirm" className="ui-button-warning" /></div> */}
                 </div>
             </div>
             <Panel headerTemplate={template} toggleable>
                 <div className="grid crud-demo">
                     <div className="col-12">
                         <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                        <DataTable value={models} paginator rows={10}>
-                            <Column field="title" header="Title" headerStyle={{ width: "%" }} filter sortable></Column>
+                        <DataTable value={models} paginator rows={10}> 
+                            <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: '%' }} />
                             <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
-                            <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: "8rem" }}></Column>
+                            <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
                             {/* <Column field="No. SJ" header="No. SJ" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="No. PTO" header="No. PTO" headerStyle={{ width: "14%" }}></Column>
                                     <Column field="No. DI" header="No. DI" headerStyle={{ width: "14%" }}></Column>
