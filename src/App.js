@@ -37,9 +37,9 @@ import ListingSampurnaGroup from './pages/ListingSampurnaGroup';
 
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faFile, faBuilding } from "@fortawesome/free-regular-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { library } from "@fortawesome/fontawesome-svg-core"
+// import { faFile, faBuilding } from "@fortawesome/free-regular-svg-icons";
 
 import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';
@@ -165,7 +165,7 @@ const App = () => {
         {
             label: 'Home',
             items: [{
-                label: 'Dashboard', icon: 'CiHome', to: '/'
+                label: 'Dashboard', icon: 'pi pi-home', to: '/'
             }]
         },
 
@@ -174,7 +174,7 @@ const App = () => {
             items: [
                 { label: 'Bank', icon: 'pi pi-fw pi-building', to: "/bank"},
                 { label: 'LayoutDesign', icon: 'pi pi-fw pi-building', to: "/layoutdesign"},
-                { label: 'FormSuratJalan', icon: 'pi pi-fw pi-card', to: "/FormSuratJalan"},
+                { label: 'FormSuratJalan', icon: 'pi pi-fw pi-id-card', to: "/FormSuratJalan"},
             ]
         },
 
@@ -182,13 +182,13 @@ const App = () => {
             label: 'SALES',
             items: [
                 {
-                    label: 'Master', icon: "CiHome",
+                    label: 'Master', icon: "pi pi-fw pi-globe",
                     items: [
                         {
-                            label: 'Pool', icon: 'pi pi-fw pi-home',
+                            label: 'Pool', icon: 'pi pi-fw pi-home', to: "/FormSuratJalan",
                         },
                         {
-                            label: 'Product', icon: 'pi pi-fw pi-car',
+                            label: 'Product', icon: 'pi pi-fw pi-box',
                         },
                         {
                             label: 'Customer', icon: 'pi pi-fw pi-users',
@@ -197,11 +197,11 @@ const App = () => {
                             label: 'Price', icon: 'pi pi-fw pi-money-bill',
                         },
                         {
-                            label: 'UJT', icon: 'pi pi-fw pi-credit-card',
+                            label: 'UJT', icon: 'CiMoneyBill',
                         },
                     ]},
                     {
-                    label: 'Office', icon: 'fa-regular fa-building',
+                    label: 'Office', icon: 'pi pi-building',
                     items: [
                         {
                             label: 'Invoice Penjualan', icon: 'pi pi-fw pi-file',
@@ -217,39 +217,39 @@ const App = () => {
                         },
                     ]},
                     {
-                    label: 'Dumptruck', icon: 'pi pi-fw pi-car',
+                    label: 'Dumptruck', icon: 'CiDeliveryTruck',
                     items: [
                         {
-                            label: 'UJT', icon: 'pi pi-fw pi-money-bill',
+                            label: 'UJT', icon: 'CiMoneyBill',
                         },
                         {
-                            label: 'NON UJT', icon: 'pi pi-fw pi-money-bill',
+                            label: 'NON UJT', icon: 'CiCreditCardOff',
                         },
                         {
                             label: 'Report', icon: 'pi pi-fw pi-file',
                         },
                     ]},
                     {
-                    label: 'Cargo', icon: 'pi pi-fw pi-car',
+                    label: 'Cargo', icon: 'CiDeliveryTruck',
                     items: [
                         {
-                            label: 'UJT', icon: 'pi pi-fw pi-money-bill',
+                            label: 'UJT', icon: 'CiMoneyBill',
                         },
                         {
-                            label: 'NON UJT', icon: 'pi pi-fw pi-money-bill',
+                            label: 'NON UJT', icon: 'CiCreditCardOff',
                         },
                         {
                             label: 'Report', icon: 'pi pi-fw pi-file',
                         },
                     ]},
                     {
-                    label: 'MIXER', icon: 'pi pi-fw pi-car',
+                    label: 'Mixer', icon: 'CiDeliveryTruck',
                     items: [
                         {
-                            label: 'UJT', icon: 'pi pi-fw pi-money-bill',
+                            label: 'UJT', icon: 'CiMoneyBill',
                         },
                         {
-                            label: 'NON UJT', icon: 'pi pi-fw pi-money-bill',
+                            label: 'NON UJT', icon: 'CiCreditCardOff',
                         },
                         {
                             label: 'Report', icon: 'pi pi-fw pi-file',
@@ -263,7 +263,7 @@ const App = () => {
             label: 'FLEET',
             items: [
                 {
-                    label: 'MASTER', icon: 'fa-regular fa-file',
+                    label: 'Master', icon: 'pi pi-globe',
                     items: [
                         {
                             label: 'Jenis Truk', icon: 'pi pi-fw pi-car',
@@ -273,7 +273,7 @@ const App = () => {
                         },
                     ]},
                     {
-                    label: 'POOL', icon: 'pi pi-fw pi-home',
+                    label: 'Pool', icon: 'pi pi-fw pi-home',
                     items: [
                         {
                             label: 'Formasi Truk', icon: 'pi pi-fw pi-car',
@@ -287,13 +287,13 @@ const App = () => {
             label: 'FINANCE',
             items: [
                 {
-                    label: 'OFFICE', icon: 'fa-regular fa-building',
+                    label: 'Office', icon: 'pi pi-building',
                     items: [
                         {
                             label: 'Invoice Finance', icon: 'pi pi-fw pi-file',
                         },
                         {
-                            label: 'Input Kas', icon: 'pi pi-fw pi-file',
+                            label: 'Input Kas', icon: 'CiCoinInsert',
                         },
                         {
                             label: 'Kasir', icon: 'pi pi-fw pi-money-bill',
@@ -303,7 +303,7 @@ const App = () => {
                         },
                     ]},
                     {
-                    label: 'POOL', icon: 'pi pi-fw pi-home',
+                    label: 'Pool', icon: 'pi pi-fw pi-home',
                     items: [
                         {
                             label: 'Kasir', icon: 'pi pi-fw pi-money-bill',
