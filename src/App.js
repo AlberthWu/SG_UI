@@ -182,19 +182,19 @@ const App = () => {
             label: 'SALES',
             items: [
                 {
-                    label: 'Master', icon: "pi pi-fw pi-globe",
+                    label: 'Master', icon: "CiGlobe",
                     items: [
                         {
-                            label: 'Pool', icon: 'pi pi-fw pi-home', to: "/FormSuratJalan",
+                            label: 'Pool', icon: 'CiHome', to: "/FormSuratJalan",
                         },
                         {
-                            label: 'Product', icon: 'pi pi-fw pi-box',
+                            label: 'Product', icon: 'CiBoxes',
                         },
                         {
-                            label: 'Customer', icon: 'pi pi-fw pi-users',
+                            label: 'Customer', icon: 'CiUser',
                         },
                         {
-                            label: 'Price', icon: 'pi pi-fw pi-money-bill',
+                            label: 'Price', icon: 'CiMoneyCheck1',
                         },
                         {
                             label: 'UJT', icon: 'CiMoneyBill',
@@ -204,13 +204,13 @@ const App = () => {
                     label: 'Office', icon: 'pi pi-building',
                     items: [
                         {
-                            label: 'Invoice Penjualan', icon: 'pi pi-fw pi-file',
+                            label: 'Invoice Penjualan', icon: 'CiFileOn',
                         },
                         {
-                            label: 'Generate Nomor Manual', icon: 'pi pi-fw pi-pencil',
+                            label: 'Generate Nomor Manual', icon: 'CiEdit',
                         },
                         {
-                            label: 'Invoice Manual', icon: 'pi pi-fw pi-file',
+                            label: 'Invoice Manual', icon: 'CiFileOn',
                         },
                         {
                             label: 'Report', icon: 'pi pi-fw pi-file',
@@ -263,20 +263,20 @@ const App = () => {
             label: 'FLEET',
             items: [
                 {
-                    label: 'Master', icon: 'pi pi-globe',
+                    label: 'Master', icon: 'CiGlobe',
                     items: [
                         {
-                            label: 'Jenis Truk', icon: 'pi pi-fw pi-car',
+                            label: 'Jenis Truk', icon: 'CiDeliveryTruck',
                         },
                         {
-                            label: 'Truk', icon: 'pi pi-fw pi-car',
+                            label: 'Truk', icon: 'CiDeliveryTruck',
                         },
                     ]},
                     {
-                    label: 'Pool', icon: 'pi pi-fw pi-home',
+                    label: 'Pool', icon: 'CiHome',
                     items: [
                         {
-                            label: 'Formasi Truk', icon: 'pi pi-fw pi-car',
+                            label: 'Formasi Truk', icon: 'CiDeliveryTruck',
                         },
                     ]
                 },
@@ -290,23 +290,23 @@ const App = () => {
                     label: 'Office', icon: 'pi pi-building',
                     items: [
                         {
-                            label: 'Invoice Finance', icon: 'pi pi-fw pi-file',
+                            label: 'Invoice Finance', icon: 'CiFileOn',
                         },
                         {
                             label: 'Input Kas', icon: 'CiCoinInsert',
                         },
                         {
-                            label: 'Kasir', icon: 'pi pi-fw pi-money-bill',
+                            label: 'Kasir', icon: 'CiMoneyBill',
                         },
                         {
                             label: 'Report', icon: 'pi pi-fw pi-file',
                         },
                     ]},
                     {
-                    label: 'Pool', icon: 'pi pi-fw pi-home',
+                    label: 'Pool', icon: 'CiHome',
                     items: [
                         {
-                            label: 'Kasir', icon: 'pi pi-fw pi-money-bill',
+                            label: 'Kasir', icon: 'CiMoneyBill',
                         },
                         {
                             label: 'Report', icon: 'pi pi-fw pi-file',
