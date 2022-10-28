@@ -1,16 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { TabMenu } from "primereact/tabmenu";
 import { Dropdown } from "primereact/dropdown";
+import { Accordion, AccordionTab } from "primereact/accordion";
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
 import { Panel } from "primereact/panel";
-import { Toast } from 'primereact/toast';
+// import { Toast } from 'primereact/toast';
 import { Ripple } from "primereact/ripple";
 import { Toolbar } from "primereact/toolbar";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
-import { Dialog } from 'primereact/dialog';
+import { Dialog } from "primereact/dialog";
 import * as Service from "../../service/PostsService";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -81,7 +82,6 @@ const FormSuratJalan = () => {
     //     ) });
     // }
 
-
     // const createId = () => {
     //     let id = '';
     //     let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -123,11 +123,9 @@ const FormSuratJalan = () => {
     //     reader.readAsText(file, 'UTF-8');
     // }
 
-
     const exportCSV = (selectionOnly) => {
         dt.current.exportCSV({ selectionOnly });
     };
-
 
     const leftToolbarTemplate = () => {
         return (
@@ -143,7 +141,7 @@ const FormSuratJalan = () => {
         return (
             <React.Fragment>
                 <div>
-                    <Button label="Export" icon="pi pi-cloud-upload" label="Export" className="p-button-raised p-button-info p-button-text mr-2" onClick={exportCSV} />
+                    <Button label="Export" icon="pi pi-cloud-upload" className="p-button-raised p-button-info p-button-text mr-2" onClick={exportCSV} />
                 </div>
             </React.Fragment>
         );
@@ -160,27 +158,9 @@ const FormSuratJalan = () => {
         { label: "Back", icon: "pi pi-angle-left" },
         { label: "New", icon: "pi pi-fw pi-file" },
         { label: "Save", icon: "pi pi-fw pi-save" },
-        { label: "Delete", icon: "pi pi-fw pi-trash" },
         { label: "Print", icon: "pi pi-fw pi-print" },
         { label: "Refresh", icon: "pi pi-fw pi-refresh" },
     ];
-
-    const template = (options) => {
-        const toggleIcon = options.collapsed ? "pi pi-chevron-down" : "pi pi-chevron-up";
-        const className = `${options.className} justify-content-start`;
-        const titleClassName = `${options.titleClassName} pl-1`;
-
-        return (
-            <div className={className}>
-                <button className={options.togglerClassName} onClick={options.onTogglerClick}>
-                    <span className={toggleIcon}></span>
-                    <Ripple />
-                </button>
-                <span className={titleClassName}>Surat Jalan</span>
-            </div>
-            
-        );
-    };
 
     const editProduct = (product) => {
         setProduct({ ...product });
@@ -193,16 +173,16 @@ const FormSuratJalan = () => {
     };
 
     const deleteProduct = () => {
-        let _products = products.filter(val => val.id !== product.id);
+        let _products = products.filter((val) => val.id !== product.id);
         setProducts(_products);
         setDeleteProductDialog(false);
         setProduct(emptyProduct);
-        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-    }
+        toast.current.show({ severity: "success", summary: "Successful", detail: "Product Deleted", life: 3000 });
+    };
 
     const hideDeleteProductDialog = () => {
         setDeleteProductDialog(false);
-    }
+    };
 
     // const hideDeleteProductsDialog = () => {
     //     setDeleteProductsDialog(false);
@@ -279,41 +259,62 @@ const FormSuratJalan = () => {
                     {/* <div><Button type="button" onClick={showConfirm} label="Confirm" className="ui-button-warning" /></div> */}
                 </div>
             </div>
-            <Panel headerTemplate={template} toggleable>
-                <div className="grid crud-demo">
-                    <div className="col-12">
-                        <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                        <DataTable value={models} paginator rows={10}> 
-                            <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: '%' }} />
-                            <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
-                            <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
-                            {/* <Column field="No. SJ" header="No. SJ" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="No. PTO" header="No. PTO" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="No. DI" header="No. DI" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="Tgl Kirim" header="Tgl Kirim" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="Customer" header="Customer" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="Gudang" header="Gudang" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="Pabrik" header="Pabrik" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="Produk" header="Produk" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="No. PO" header="No. PO" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="Vol" header="Vol" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="Tgl. Terima" header="Tgl. Terima" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="Status" header="Status" headerStyle={{ width: "14%" }}></Column>
-                                    <Column field="UserID" header="UserID" headerStyle={{ width: "14%" }}></Column> */}
-                        </DataTable>
-                        <Dialog visible={deleteProductDialog} style={{ width: "450px" }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
-                            <div className="confirmation-content">
-                                <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: "2rem" }} />
-                                {product && (
-                                    <span>
-                                        Are you sure you want to delete <b>{product.name}</b>?
-                                    </span>
-                                )}
-                            </div>
-                        </Dialog>
-                    </div>
-                </div>
-            </Panel>
+            <Accordion activeIndex={0}>
+                <AccordionTab header="Surat Jalan">
+                    <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
+                    <DataTable value={models} paginator rows={10}>
+                        <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
+                        <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
+                        <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
+                    </DataTable>
+                    <Dialog visible={deleteProductDialog} style={{ width: "450px" }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
+                        <div className="confirmation-content">
+                            <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: "2rem" }} />
+                            {product && (
+                                <span>
+                                    Are you sure you want to delete <b>{product.name}</b>?
+                                </span>
+                            )}
+                        </div>
+                    </Dialog>
+                </AccordionTab>
+                <AccordionTab header="Modal/Rembesan">
+                    <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
+                    <DataTable value={models} paginator rows={10}>
+                        <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
+                        <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
+                        <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
+                    </DataTable>
+                    <Dialog visible={deleteProductDialog} style={{ width: "450px" }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
+                        <div className="confirmation-content">
+                            <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: "2rem" }} />
+                            {product && (
+                                <span>
+                                    Are you sure you want to delete <b>{product.name}</b>?
+                                </span>
+                            )}
+                        </div>
+                    </Dialog>
+                </AccordionTab>
+                <AccordionTab header="History Modal">
+                    <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
+                    <DataTable value={models} paginator rows={10}>
+                        <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
+                        <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
+                        <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
+                    </DataTable>
+                    <Dialog visible={deleteProductDialog} style={{ width: "450px" }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
+                        <div className="confirmation-content">
+                            <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: "2rem" }} />
+                            {product && (
+                                <span>
+                                    Are you sure you want to delete <b>{product.name}</b>?
+                                </span>
+                            )}
+                        </div>
+                    </Dialog>
+                </AccordionTab>
+            </Accordion>
         </div>
     );
 };
