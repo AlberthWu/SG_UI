@@ -4,18 +4,16 @@ import { Dropdown } from "primereact/dropdown";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
-import { Panel } from "primereact/panel";
-// import { Toast } from 'primereact/toast';
-import { Ripple } from "primereact/ripple";
+// import { Badge } from 'primereact/badge';
+// import { Ripple } from "primereact/ripple";
 import { Toolbar } from "primereact/toolbar";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
+import { InputSwitch } from 'primereact/inputswitch';
+// import { CiHome } from "react-icons/ci";
 import * as Service from "../../service/PostsService";
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCoffee, faTruck, faDashboard, faSignIn, faBuilding, faTrailer, faUserGear, faPrint, faMoneyBill, faCalendarDay, faDollar, faTruckPickup, faHelicopter, faSignsPost, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const FormSuratJalan = () => {
     const toast = useRef(null);
@@ -52,12 +50,28 @@ const FormSuratJalan = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [value6, setValue6] = useState("");
     const dt = useRef(null);
+    const [checked1, setChecked1] = useState(false);
 
     const openNew = () => {
         setProduct(emptyProduct);
         setSubmitted(false);
         setProductDialog(true);
     };
+
+    // const CustomCiIcon = ({name}) => {
+    //     const CircumIcons = CiIcons[name];
+    //     if (!CircumIcons) return <p></p>
+    //     return <CircumIcons/>;
+    // };
+    
+    // const setIconMenu=(icon) =>{
+    //     const iconType = icon.substring(0,2).toLowerCase();
+    //     if (iconType === "pi"){
+    //         return <i className={icon}></i>
+    //     } else if (iconType === "ci"){
+    //         return <CustomCiIcon name={icon}/>
+    //     }
+    // };
 
     // const ToastDemo = () => {
     //     const toastBC = useRef(null);
@@ -131,6 +145,9 @@ const FormSuratJalan = () => {
         return (
             <React.Fragment>
                 <div className="my-2">
+                <InputSwitch checked={checked1} onChange={(e) => setChecked1(e.value)} />
+                </div>
+                <div className="my-2">
                     <Button label="New" icon="pi pi-plus-circle" className="p-button-raised p-button-success p-button-text" onClick={openNew} />
                 </div>
             </React.Fragment>
@@ -155,7 +172,7 @@ const FormSuratJalan = () => {
     );
 
     const items = [
-        { label: "Back", icon: "pi pi-angle-left" },
+        { label: "Back", icon: "pi pi-chevron-left" },
         { label: "New", icon: "pi pi-fw pi-file" },
         { label: "Save", icon: "pi pi-fw pi-save" },
         { label: "Print", icon: "pi pi-fw pi-print" },
@@ -191,8 +208,8 @@ const FormSuratJalan = () => {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mb-2" onClick={() => editProduct(rowData)} />
-                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning mb-2" onClick={() => confirmDeleteProduct(rowData)} />
+                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success p-button-text mb-2" onClick={() => editProduct(rowData)} />
+                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning p-button-text mb-2" onClick={() => confirmDeleteProduct(rowData)} />
             </React.Fragment>
         );
     };
@@ -269,7 +286,7 @@ const FormSuratJalan = () => {
                     </DataTable>
                     <Dialog visible={deleteProductDialog} style={{ width: "450px" }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
                         <div className="confirmation-content">
-                            <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: "2rem" }} />
+                            <i className="pi pi-exclamation-triangle mr- 3" style={{ fontSize: "2rem" }} />
                             {product && (
                                 <span>
                                     Are you sure you want to delete <b>{product.name}</b>?
@@ -278,7 +295,7 @@ const FormSuratJalan = () => {
                         </div>
                     </Dialog>
                 </AccordionTab>
-                <AccordionTab header="Modal/Rembesan">
+                <AccordionTab header="Produk">
                     <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
                     <DataTable value={models} paginator rows={10}>
                         <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
