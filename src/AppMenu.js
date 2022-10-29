@@ -48,6 +48,7 @@ const AppSubmenu = (props) => {
             event.target.click();
         }
     }
+    
     const CustomCiIcon = ({name}) => {
         const CircumIcons = CiIcons[name];
         if (!CircumIcons) return <p></p>

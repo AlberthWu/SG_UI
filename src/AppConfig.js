@@ -7,7 +7,7 @@ import {Button} from "primereact/button";
 export const AppConfig = (props) => {
 
     const [active, setActive] = useState(false);
-    const [scale] = useState(12);
+    const [scale] = useState(10);
     // const [scales] = useState([12,13,14,15,16]);
     const [theme, setTheme] = useState('lara-light-indigo');
     const config = useRef(null);
