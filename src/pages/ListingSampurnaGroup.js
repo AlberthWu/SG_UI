@@ -42,7 +42,7 @@ const ListingSampurnaGroup = () => {
     useEffect(() => {
         productService.getProducts().then(data => setProducts(data));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+    
     const formatCurrency = (value) => {
         return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
     }
