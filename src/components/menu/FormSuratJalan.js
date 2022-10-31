@@ -11,7 +11,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
-import { InputSwitch } from 'primereact/inputswitch';
+// import { InputSwitch } from 'primereact/inputswitch';
 // import { CiHome } from "react-icons/ci";
 import * as Service from "../../service/PostsService";
 
@@ -50,7 +50,7 @@ const FormSuratJalan = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [value6, setValue6] = useState("");
     const dt = useRef(null);
-    const [checked1, setChecked1] = useState(false);
+    // const [checked1, setChecked1] = useState(false);
 
     const openNew = () => {
         setProduct(emptyProduct);
@@ -144,9 +144,9 @@ const FormSuratJalan = () => {
     const leftToolbarTemplate = () => {
         return (
             <React.Fragment>
-                <div className="my-2">
+                {/* <div className="my-2 mr-4">
                 <InputSwitch checked={checked1} onChange={(e) => setChecked1(e.value)} />
-                </div>
+                </div> */}
                 <div className="my-2">
                     <Button label="New" icon="pi pi-plus-circle" className="p-button-raised p-button-success p-button-text" onClick={openNew} />
                 </div>
@@ -279,7 +279,7 @@ const FormSuratJalan = () => {
             <Accordion activeIndex={0}>
                 <AccordionTab header="Surat Jalan">
                     <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                    <DataTable value={models} paginator rows={10}>
+                    <DataTable value={models} paginator rows={10} stripedRows>
                         <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
                         <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
                         <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
