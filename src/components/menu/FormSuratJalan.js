@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { TabMenu } from "primereact/tabmenu";
+// import { TabMenu } from "primereact/tabmenu";
 import { Dropdown } from "primereact/dropdown";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { Calendar } from "primereact/calendar";
@@ -47,7 +47,7 @@ const FormSuratJalan = () => {
     const [deleteProductDialog, setDeleteProductDialog] = useState(false);
     // const [setDeleteProductsDialog] = useState(false);
     const [setProductDialog] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(0);
+    // const [activeIndex, setActiveIndex] = useState(0);
     const [value6, setValue6] = useState("");
     const dt = useRef(null);
     // const [checked1, setChecked1] = useState(false);
@@ -171,13 +171,13 @@ const FormSuratJalan = () => {
         </React.Fragment>
     );
 
-    const items = [
-        { label: "Back", icon: "pi pi-chevron-left" },
-        { label: "New", icon: "pi pi-fw pi-file" },
-        { label: "Save", icon: "pi pi-fw pi-save" },
-        { label: "Print", icon: "pi pi-fw pi-print" },
-        { label: "Refresh", icon: "pi pi-fw pi-refresh" },
-    ];
+    // const items = [
+    //     { label: "Back", icon: "pi pi-chevron-left" },
+    //     { label: "New", icon: "pi pi-fw pi-file" },
+    //     { label: "Save", icon: "pi pi-fw pi-save" },
+    //     { label: "Print", icon: "pi pi-fw pi-print" },
+    //     { label: "Refresh", icon: "pi pi-fw pi-refresh" },
+    // ];
 
     const editProduct = (product) => {
         setProduct({ ...product });
@@ -214,9 +214,20 @@ const FormSuratJalan = () => {
         );
     };
 
+    const leftContents = (
+        <React.Fragment>
+            <Button label="Back" icon="pi pi-angle-left" className="p-button-secondary p-button-text mr-2" />
+            <Button label="New" icon="pi pi-plus" className="p-button-secondary p-button-text" />
+            <Button label="Save" icon="pi pi-save" className="p-button-secondary p-button-text" />
+            <Button label="Print" icon="pi pi-print" className="p-button-secondary p-button-text mr-2" />
+            <Button label="Refresh" icon="pi pi-refresh" className="p-button-secondary p-button-text" />
+        </React.Fragment>
+    );
+
     return (
         <div>
-            <TabMenu model={items} className="mb-2" activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} />
+            {/* <TabMenu model={items} className="mb-2" activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} /> */}
+            <Toolbar left={leftContents}/>
             <div className="card p-fluid">
                 <h5>Form Surat Jalan</h5>
                 <div className="field grid">
@@ -279,7 +290,9 @@ const FormSuratJalan = () => {
             <Accordion activeIndex={0}>
                 <AccordionTab header="Surat Jalan">
                     <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                    <DataTable value={models} paginator rows={10} stripedRows>
+                    <DataTable value={models} scrollable scrollHeight="400px" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
+                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll" stripedRows>
                         <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
                         <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
                         <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
@@ -297,7 +310,9 @@ const FormSuratJalan = () => {
                 </AccordionTab>
                 <AccordionTab header="Produk">
                     <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                    <DataTable value={models} paginator rows={10}>
+                    <DataTable value={models} scrollable scrollHeight="400px" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
+                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
                         <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
                         <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
                         <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
@@ -315,7 +330,9 @@ const FormSuratJalan = () => {
                 </AccordionTab>
                 <AccordionTab header="History Modal">
                     <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                    <DataTable value={models} paginator rows={10}>
+                    <DataTable value={models} scrollable scrollHeight="400px" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
+                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
                         <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
                         <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
                         <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
