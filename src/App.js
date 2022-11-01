@@ -182,12 +182,12 @@ const App = () => {
                             {
                                 "label": "Pool",
                                 "icon": "HiOutlineHome",
-                                "to": "/pool/list"
+                                "to": "/FormSuratJalan"
                             },
                             {
                                 "label": "Product",
                                 "icon": "HiOutlineCube",
-                                "to": "/product/list"
+                                "to": "/bank"
                             },
                             {
                                 "label": "Customer",

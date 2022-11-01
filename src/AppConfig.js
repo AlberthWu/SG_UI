@@ -59,7 +59,7 @@ export const AppConfig = (props) => {
     // }
 
     useEffect(() => {
-        document.documentElement.style.fontSize = scale + 'px';
+        document.documentElement.style.fontSize = scale + '70 px';
     }, [scale])
 
     const toggleConfigurator = (event) => {

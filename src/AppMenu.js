@@ -54,7 +54,7 @@ const AppSubmenu = (props) => {
     const CustomHiIcon = ({name}) => {
         const HeroIcons2 = HiIcons[name];
         if (!HeroIcons2) return <p></p>
-        return <HeroIcons2/>;
+        return <HeroIcons2 size={16}/>;
     };
     
     const setIconMenu=(icon) =>{
