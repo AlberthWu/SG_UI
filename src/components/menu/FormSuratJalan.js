@@ -227,8 +227,8 @@ const FormSuratJalan = () => {
     return (
         <div>
             {/* <TabMenu model={items} className="mb-2" activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} /> */}
-            <Toolbar left={leftContents}/>
             <div className="card p-fluid">
+            <Toolbar left={leftContents}/>
                 <h5>Form Surat Jalan</h5>
                 <div className="field grid">
                     <label htmlFor="name3" className="col-12 mb-0 md:col-2 md:mb-0">
