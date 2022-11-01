@@ -4,7 +4,9 @@ import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import {Ripple} from "primereact/ripple";
 import { Badge } from 'primereact/badge';
-import * as CiIcons from "react-icons/ci";
+// import * as CiIcons from "react-icons/ci";
+import * as HiIcons from "react-icons/hi2";
+
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { library } from "@fortawesome/fontawesome-svg-core"
 // import { far } from "@fortawesome/free-regular-svg-icons";
@@ -49,18 +51,18 @@ const AppSubmenu = (props) => {
         }
     }
     
-    const CustomCiIcon = ({name}) => {
-        const CircumIcons = CiIcons[name];
-        if (!CircumIcons) return <p></p>
-        return <CircumIcons/>;
+    const CustomHiIcon = ({name}) => {
+        const HeroIcons2 = HiIcons[name];
+        if (!HeroIcons2) return <p></p>
+        return <HeroIcons2/>;
     };
     
     const setIconMenu=(icon) =>{
         const iconType = icon.substring(0,2).toLowerCase();
         if (iconType === "pi"){
             return <i className={icon}></i>
-        } else if (iconType === "ci"){
-            return <CustomCiIcon name={icon}/>
+        } else if (iconType === "hi"){
+            return <CustomHiIcon name={icon}/>
         }
     };
 
