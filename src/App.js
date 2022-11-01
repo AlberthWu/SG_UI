@@ -162,247 +162,509 @@ const App = () => {
     }
 
     const menu = [
-        {
-            label: 'Home',
-            items: [{
-                label: 'Dashboard', icon: 'pi pi-home', to: '/'
-            }]
-        },
+            {
+                "label": "Home",
+                "items": [
+                    {
+                        "label": "Dashboard",
+                        "icon": "HiOutlineChartBarSquare",
+                        "to": "/"
+                    }
+                ]
+            },
+            {
+                "label": "Sales",
+                "items": [
+                    {
+                        "label": "Master",
+                        "icon": "HiOutlineSquaresPlus",
+                        "items": [
+                            {
+                                "label": "Pool",
+                                "icon": "HiOutlineHome",
+                                "to": "/pool/list"
+                            },
+                            {
+                                "label": "Product",
+                                "icon": "HiOutlineCube",
+                                "to": "/product/list"
+                            },
+                            {
+                                "label": "Customer",
+                                "icon": "HiOutlineUserGroup",
+                                "to": "/customer/list"
+                            },
+                            {
+                                "label": "Price List",
+                                "icon": "HiOutlineCurrencyDollar",
+                                "to": "/sales/master/price/list"
+                            },
+                            {
+                                "label": "Ujt List",
+                                "icon": "HiOutlineCreditCard",
+                                "to": "/sales/master/ujt/list"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Office",
+                        "icon": "HiOutlineBuildingOffice2",
+                        "items": [
+                            {
+                                "label": "PO Customer",
+                                "icon": "HiOutlineClipboardDocumentList",
+                                "to": "/sales/office/po/list"
+                            },
+                            {
+                                "label": "Invoice",
+                                "icon": "HiOutlineDocumentText",
+                                "to": "/sales/office/invoice/list"
+                            },
+                            {
+                                "label": "Invoice (Manual)",
+                                "icon": "HiOutlineDocumentPlus",
+                                "to": "/sales/office/invoice-manual/list"
+                            },
+                            {
+                                "label": "Order Manual Number",
+                                "icon": "HiOutlineCalculator",
+                                "to": "/sales/office/order-manual-number/list"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Dump Truck",
+                        "icon": "HiOutlineTruck",
+                        "items": [
+                            {
+                                "label": "Order Ujt",
+                                "icon": "HiOutlineBanknotes",
+                                "to": "/sales/dumptruck/order-ujt/list"
+                            },
+                            {
+                                "label": "Order Non Ujt",
+                                "icon": "HiOutlineCreditCard",
+                                "to": "/sales/dumptruck/order-nonujt/list"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Cargo",
+                        "icon": "HiOutlineTruck",
+                        "items": [
+                            {
+                                "label": "Order Ujt",
+                                "icon": "HiOutlineBanknotes",
+                                "to": "/sales/cargo/order-ujt/list"
+                            },
+                            {
+                                "label": "Order Non Ujt",
+                                "icon": "HiOutlineCreditCard",
+                                "to": "/sales/cargo/order-nonujt/list"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Mixer",
+                        "icon": "HiOutlineTruck",
+                        "items": [
+                            {
+                                "label": "Order Ujt",
+                                "icon": "HiOutlineBanknotes",
+                                "to": "/sales/mixer/order-ujt/list"
+                            },
+                            {
+                                "label": "Order Non Ujt",
+                                "icon": "HiOutlineCreditCard",
+                                "to": "/sales/order/order-nonujt/list"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": "Purchase",
+                "items": [
+                    {
+                        "label": "Master",
+                        "icon": "HiOutlineSquaresPlus",
+                        "items": [
+                            {
+                                "label": "Origin",
+                                "icon": "HiOutlineHomeModern",
+                                "to": "/purchase/master/origin/list"
+                            },
+                            {
+                                "label": "Transporter",
+                                "icon": "HiOutlineTruck",
+                                "to": "/purchase/master/transporter/list"
+                            },
+                            {
+                                "label": "Supplier",
+                                "icon": "HiOutlineShoppingCart",
+                                "to": "/purchase/master/supplier/list"
+                            },
+                            {
+                                "label": "Sparepart",
+                                "icon": "HiOutlineWrenchScrewdriver",
+                                "to": "/purchase/master/sparepart/list"
+                            },
+                            {
+                                "label": "Cost List",
+                                "icon": "HiOutlineDocumentText",
+                                "to": "/purchase/master/cost/list"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Office",
+                        "icon": "HiOutlineBuildingOffice2",
+                        "items": [
+                            {
+                                "label": "DO Origin",
+                                "icon": "HiOutlineDocumentDuplicate",
+                                "to": "/purchase/office/do-origin/list"
+                            },
+                            {
+                                "label": "Invoice",
+                                "icon": "HiOutlineDocumentText",
+                                "to": "/purchase/master/invoice/list"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": "Inventory",
+                // "icons": "HiOutlineClipboardDocumentList"
+            },
+            {
+                "label": "Finance",
+                // "icons": "HiOutlineChartBar"
+            },
+            {
+                "label": "Payroll",
+                // "icon": "HiOutlineIdentification",
+                "items": [
+                    {
+                        "label": "Master",
+                        "icon": "HiOutlineSquaresPlus",
+                        "items": [
+                            {
+                                "label": "Bank",
+                                "icon": "HiOutlineBuildingLibrary",
+                                "to": "/bank/list"
+                            },
+                            {
+                                "label": "Fleet",
+                                "icon": "HiOutlineTruck",
+                                "to": "/fleet/list"
+                            },
+                            {
+                                "label": "UJT",
+                                "icon": "HiOutlineBanknotes",
+                                "to": "/ujt/list"
+                            },
+                            {
+                                "label": "Employee",
+                                "icon": "HiOutlineUser",
+                                "to": "/employee-list"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Office",
+                        "icon": "HiOutlineBuildingOffice2",
+                        "to": "/office"
+                    },
+                    {
+                        "label": "Driver",
+                        "icon": "HiOutlineUserCircle",
+                        "items": [
+                            {
+                                "label": "Dump Truck",
+                                "icon": "HiOutlineTruck",
+                                "to": "/dumptruck"
+                            },
+                            {
+                                "label": "Cargo",
+                                "icon": "HiOutlineTruck",
+                                "to": "/cargo"
+                            },
+                            {
+                                "label": "Mixer",
+                                "icon": "HiOutlineTruck",
+                                "to": "/mixer"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Report",
+                        "icon": "HiOutlineDocumentChartBar",
+                        "items": [
+                            {
+                                "label": "Payslip",
+                                "icon": "HiOutlineCreditCard",
+                                "to": "/payslip"
+                            },
+                            {
+                                "label": "Attendance",
+                                "icon": "HiOutlineCalendarDays",
+                                "to": "/attendance"
+                            },
+                            {
+                                "label": "Overtime",
+                                "icon": "HiOutlineClock",
+                                "to": "/overtime"
+                            }
+                        ]
+                    }
+                ]
+            },
+        ]
+    
+    // const menu = [
+    //     {
+    //         label: 'Home',
+    //         items: [{
+    //             label: 'Dashboard', icon: 'pi pi-home', to: '/'
+    //         }]
+    //     },
 
-        {
-            label: 'Sampurna Group',
-            items: [
-                { label: 'Bank', icon: 'pi pi-fw pi-building', to: "/bank"},
-                { label: 'LayoutDesign', icon: 'pi pi-fw pi-building', to: "/layoutdesign"},
-                { label: 'FormSuratJalan', icon: 'pi pi-fw pi-id-card', to: "/FormSuratJalan"},
-            ]
-        },
+    //     {
+    //         label: 'Sampurna Group',
+    //         items: [
+    //             { label: 'Bank', icon: 'pi pi-fw pi-building', to: "/bank"},
+    //             { label: 'LayoutDesign', icon: 'pi pi-fw pi-building', to: "/layoutdesign"},
+    //             { label: 'FormSuratJalan', icon: 'pi pi-fw pi-id-card', to: "/FormSuratJalan"},
+    //         ]
+    //     },
 
-        {
-            label: 'SALES',
-            items: [
-                {
-                    label: 'Master', icon: "CiGlobe",
-                    items: [
-                        {
-                            label: 'Pool', icon: 'CiHome', to: "/FormSuratJalan",
-                        },
-                        {
-                            label: 'Product', icon: 'CiBoxes',
-                        },
-                        {
-                            label: 'Customer', icon: 'CiUser',
-                        },
-                        {
-                            label: 'Price', icon: 'CiMoneyCheck1',
-                        },
-                        {
-                            label: 'UJT', icon: 'CiMoneyBill',
-                        },
-                    ]},
-                    {
-                    label: 'Office', icon: 'pi pi-building',
-                    items: [
-                        {
-                            label: 'Invoice Penjualan', icon: 'CiFileOn',
-                        },
-                        {
-                            label: 'Generate Nomor Manual', icon: 'CiEdit',
-                        },
-                        {
-                            label: 'Invoice Manual', icon: 'CiFileOn',
-                        },
-                        {
-                            label: 'Report', icon: 'pi pi-fw pi-file',
-                        },
-                    ]},
-                    {
-                    label: 'Dumptruck', icon: 'CiDeliveryTruck',
-                    items: [
-                        {
-                            label: 'UJT', icon: 'CiMoneyBill',
-                        },
-                        {
-                            label: 'NON UJT', icon: 'CiCreditCardOff',
-                        },
-                        {
-                            label: 'Report', icon: 'pi pi-fw pi-file',
-                        },
-                    ]},
-                    {
-                    label: 'Cargo', icon: 'CiDeliveryTruck',
-                    items: [
-                        {
-                            label: 'UJT', icon: 'CiMoneyBill',
-                        },
-                        {
-                            label: 'NON UJT', icon: 'CiCreditCardOff',
-                        },
-                        {
-                            label: 'Report', icon: 'pi pi-fw pi-file',
-                        },
-                    ]},
-                    {
-                    label: 'Mixer', icon: 'CiDeliveryTruck',
-                    items: [
-                        {
-                            label: 'UJT', icon: 'CiMoneyBill',
-                        },
-                        {
-                            label: 'NON UJT', icon: 'CiCreditCardOff',
-                        },
-                        {
-                            label: 'Report', icon: 'pi pi-fw pi-file',
-                        },
-                    ]
-                },
-            ]
-        },
+    //     {
+    //         label: 'SALES',
+    //         items: [
+    //             {
+    //                 label: 'Master', icon: "CiGlobe",
+    //                 items: [
+    //                     {
+    //                         label: 'Pool', icon: 'CiHome', to: "/FormSuratJalan",
+    //                     },
+    //                     {
+    //                         label: 'Product', icon: 'CiBoxes',
+    //                     },
+    //                     {
+    //                         label: 'Customer', icon: 'CiUser',
+    //                     },
+    //                     {
+    //                         label: 'Price', icon: 'CiMoneyCheck1',
+    //                     },
+    //                     {
+    //                         label: 'UJT', icon: 'CiMoneyBill',
+    //                     },
+    //                 ]},
+    //                 {
+    //                 label: 'Office', icon: 'pi pi-building',
+    //                 items: [
+    //                     {
+    //                         label: 'Invoice Penjualan', icon: 'CiFileOn',
+    //                     },
+    //                     {
+    //                         label: 'Generate Nomor Manual', icon: 'CiEdit',
+    //                     },
+    //                     {
+    //                         label: 'Invoice Manual', icon: 'CiFileOn',
+    //                     },
+    //                     {
+    //                         label: 'Report', icon: 'pi pi-fw pi-file',
+    //                     },
+    //                 ]},
+    //                 {
+    //                 label: 'Dumptruck', icon: 'CiDeliveryTruck',
+    //                 items: [
+    //                     {
+    //                         label: 'UJT', icon: 'CiMoneyBill',
+    //                     },
+    //                     {
+    //                         label: 'NON UJT', icon: 'CiCreditCardOff',
+    //                     },
+    //                     {
+    //                         label: 'Report', icon: 'pi pi-fw pi-file',
+    //                     },
+    //                 ]},
+    //                 {
+    //                 label: 'Cargo', icon: 'CiDeliveryTruck',
+    //                 items: [
+    //                     {
+    //                         label: 'UJT', icon: 'CiMoneyBill',
+    //                     },
+    //                     {
+    //                         label: 'NON UJT', icon: 'CiCreditCardOff',
+    //                     },
+    //                     {
+    //                         label: 'Report', icon: 'pi pi-fw pi-file',
+    //                     },
+    //                 ]},
+    //                 {
+    //                 label: 'Mixer', icon: 'CiDeliveryTruck',
+    //                 items: [
+    //                     {
+    //                         label: 'UJT', icon: 'CiMoneyBill',
+    //                     },
+    //                     {
+    //                         label: 'NON UJT', icon: 'CiCreditCardOff',
+    //                     },
+    //                     {
+    //                         label: 'Report', icon: 'pi pi-fw pi-file',
+    //                     },
+    //                 ]
+    //             },
+    //         ]
+    //     },
 
-        {
-            label: 'FLEET',
-            items: [
-                {
-                    label: 'Master', icon: 'CiGlobe',
-                    items: [
-                        {
-                            label: 'Jenis Truk', icon: 'CiDeliveryTruck',
-                        },
-                        {
-                            label: 'Truk', icon: 'CiDeliveryTruck',
-                        },
-                    ]},
-                    {
-                    label: 'Pool', icon: 'CiHome',
-                    items: [
-                        {
-                            label: 'Formasi Truk', icon: 'CiDeliveryTruck',
-                        },
-                    ]
-                },
-            ]
-        },
+    //     {
+    //         label: 'FLEET',
+    //         items: [
+    //             {
+    //                 label: 'Master', icon: 'CiGlobe',
+    //                 items: [
+    //                     {
+    //                         label: 'Jenis Truk', icon: 'CiDeliveryTruck',
+    //                     },
+    //                     {
+    //                         label: 'Truk', icon: 'CiDeliveryTruck',
+    //                     },
+    //                 ]},
+    //                 {
+    //                 label: 'Pool', icon: 'CiHome',
+    //                 items: [
+    //                     {
+    //                         label: 'Formasi Truk', icon: 'CiDeliveryTruck',
+    //                     },
+    //                 ]
+    //             },
+    //         ]
+    //     },
         
-        {
-            label: 'FINANCE',
-            items: [
-                {
-                    label: 'Office', icon: 'pi pi-building',
-                    items: [
-                        {
-                            label: 'Invoice Finance', icon: 'CiFileOn',
-                        },
-                        {
-                            label: 'Input Kas', icon: 'CiCoinInsert',
-                        },
-                        {
-                            label: 'Kasir', icon: 'CiMoneyBill',
-                        },
-                        {
-                            label: 'Report', icon: 'pi pi-fw pi-file',
-                        },
-                    ]},
-                    {
-                    label: 'Pool', icon: 'CiHome',
-                    items: [
-                        {
-                            label: 'Kasir', icon: 'CiMoneyBill',
-                        },
-                        {
-                            label: 'Report', icon: 'pi pi-fw pi-file',
-                        },
-                    ]
-                },
-            ]
-        },
+    //     {
+    //         label: 'FINANCE',
+    //         items: [
+    //             {
+    //                 label: 'Office', icon: 'pi pi-building',
+    //                 items: [
+    //                     {
+    //                         label: 'Invoice Finance', icon: 'CiFileOn',
+    //                     },
+    //                     {
+    //                         label: 'Input Kas', icon: 'CiCoinInsert',
+    //                     },
+    //                     {
+    //                         label: 'Kasir', icon: 'CiMoneyBill',
+    //                     },
+    //                     {
+    //                         label: 'Report', icon: 'pi pi-fw pi-file',
+    //                     },
+    //                 ]},
+    //                 {
+    //                 label: 'Pool', icon: 'CiHome',
+    //                 items: [
+    //                     {
+    //                         label: 'Kasir', icon: 'CiMoneyBill',
+    //                     },
+    //                     {
+    //                         label: 'Report', icon: 'pi pi-fw pi-file',
+    //                     },
+    //                 ]
+    //             },
+    //         ]
+    //     },
 
-        {
-            label: 'UI Components', icon: 'pi pi-fw pi-sitemap',
-            items: [
-                { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', to: '/formlayout' },
-                { label: 'Input', icon: 'pi pi-fw pi-check-square', to: '/input' },
-                { label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel" },
-                { label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "invalidstate" },
-                { label: 'Button', icon: 'pi pi-fw pi-mobile', to: '/button' },
-                { label: 'Table', icon: 'pi pi-fw pi-table', to: '/table' },
-                { label: 'List', icon: 'pi pi-fw pi-list', to: '/list' },
-                { label: 'Tree', icon: 'pi pi-fw pi-share-alt', to: '/tree' },
-                { label: 'Panel', icon: 'pi pi-fw pi-tablet', to: '/panel' },
-                { label: 'Overlay', icon: 'pi pi-fw pi-clone', to: '/overlay' },
-                { label: "Media", icon: "pi pi-fw pi-image", to: "/media" },
-                { label: 'Menu', icon: 'pi pi-fw pi-bars', to: '/menu' },
-                { label: 'Message', icon: 'pi pi-fw pi-comment', to: '/messages' },
-                { label: 'File', icon: 'pi pi-fw pi-file', to: '/file' },
-                { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', to: '/chart' },
-                { label: 'Misc', icon: 'pi pi-fw pi-circle-off', to: '/misc' },
-            ]
-        },
-        {
-            label: 'UI Blocks',
-            items: [
-                { label: 'Free Blocks', icon: 'pi pi-fw pi-eye', to: '/blocks', badge: "NEW" },
-                { label: 'All Blocks', icon: 'pi pi-fw pi-globe', url: 'https://www.primefaces.org/primeblocks-react' }
-            ]
-        },
-        {
-            label: 'Icons',
-            items: [
-                { label: 'PrimeIcons', icon: 'pi pi-fw pi-prime', to: '/icons' }
-            ]
-        },
-        {
-            label: 'Pages', icon: 'pi pi-fw pi-clone',
-            items: [
-                { label: 'Crud', icon: 'pi pi-fw pi-user-edit', to: '/crud' },
-                { label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline' },
-            ]
-        },
-        {
-            label: 'Menu Hierarchy', icon: 'pi pi-fw pi-search',
-            items: [
-                {
-                    label: 'Submenu 1', icon: 'pi pi-fw pi-bookmark',
-                    items: [
-                        {
-                            label: 'Submenu 1.1', icon: 'pi pi-fw pi-bookmark',
-                            items: [
-                                { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark' },
-                                { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark' },
-                                { label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-bookmark' },
-                            ]
-                        },
-                        {
-                            label: 'Submenu 1.2', icon: 'pi pi-fw pi-bookmark',
-                            items: [
-                                { label: 'Submenu 1.2.1', icon: 'pi pi-fw pi-bookmark' },
-                                { label: 'Submenu 1.2.2', icon: 'pi pi-fw pi-bookmark' }
-                            ]
-                        },
-                    ]
-                },
-                {
-                    label: 'Submenu 2', icon: 'pi pi-fw pi-bookmark',
-                    items: [
-                        {
-                            label: 'Submenu 2.1', icon: 'pi pi-fw pi-bookmark',
-                            items: [
-                                { label: 'Submenu 2.1.1', icon: 'pi pi-fw pi-bookmark' },
-                                { label: 'Submenu 2.1.2', icon: 'pi pi-fw pi-bookmark' },
-                                { label: 'Submenu 2.1.3', icon: 'pi pi-fw pi-bookmark' },
-                            ]
-                        },
-                        {
-                            label: 'Submenu 2.2', icon: 'pi pi-fw pi-bookmark',
-                            items: [
-                                { label: 'Submenu 2.2.1', icon: 'pi pi-fw pi-bookmark' },
-                                { label: 'Submenu 2.2.2', icon: 'pi pi-fw pi-bookmark' }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ];
+    //     {
+    //         label: 'UI Components', icon: 'pi pi-fw pi-sitemap',
+    //         items: [
+    //             { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', to: '/formlayout' },
+    //             { label: 'Input', icon: 'pi pi-fw pi-check-square', to: '/input' },
+    //             { label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel" },
+    //             { label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "invalidstate" },
+    //             { label: 'Button', icon: 'pi pi-fw pi-mobile', to: '/button' },
+    //             { label: 'Table', icon: 'pi pi-fw pi-table', to: '/table' },
+    //             { label: 'List', icon: 'pi pi-fw pi-list', to: '/list' },
+    //             { label: 'Tree', icon: 'pi pi-fw pi-share-alt', to: '/tree' },
+    //             { label: 'Panel', icon: 'pi pi-fw pi-tablet', to: '/panel' },
+    //             { label: 'Overlay', icon: 'pi pi-fw pi-clone', to: '/overlay' },
+    //             { label: "Media", icon: "pi pi-fw pi-image", to: "/media" },
+    //             { label: 'Menu', icon: 'pi pi-fw pi-bars', to: '/menu' },
+    //             { label: 'Message', icon: 'pi pi-fw pi-comment', to: '/messages' },
+    //             { label: 'File', icon: 'pi pi-fw pi-file', to: '/file' },
+    //             { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', to: '/chart' },
+    //             { label: 'Misc', icon: 'pi pi-fw pi-circle-off', to: '/misc' },
+    //         ]
+    //     },
+    //     {
+    //         label: 'UI Blocks',
+    //         items: [
+    //             { label: 'Free Blocks', icon: 'pi pi-fw pi-eye', to: '/blocks', badge: "NEW" },
+    //             { label: 'All Blocks', icon: 'pi pi-fw pi-globe', url: 'https://www.primefaces.org/primeblocks-react' }
+    //         ]
+    //     },
+    //     {
+    //         label: 'Icons',
+    //         items: [
+    //             { label: 'PrimeIcons', icon: 'pi pi-fw pi-prime', to: '/icons' }
+    //         ]
+    //     },
+    //     {
+    //         label: 'Pages', icon: 'pi pi-fw pi-clone',
+    //         items: [
+    //             { label: 'Crud', icon: 'pi pi-fw pi-user-edit', to: '/crud' },
+    //             { label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline' },
+    //         ]
+    //     },
+    //     {
+    //         label: 'Menu Hierarchy', icon: 'pi pi-fw pi-search',
+    //         items: [
+    //             {
+    //                 label: 'Submenu 1', icon: 'pi pi-fw pi-bookmark',
+    //                 items: [
+    //                     {
+    //                         label: 'Submenu 1.1', icon: 'pi pi-fw pi-bookmark',
+    //                         items: [
+    //                             { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark' },
+    //                             { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark' },
+    //                             { label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-bookmark' },
+    //                         ]
+    //                     },
+    //                     {
+    //                         label: 'Submenu 1.2', icon: 'pi pi-fw pi-bookmark',
+    //                         items: [
+    //                             { label: 'Submenu 1.2.1', icon: 'pi pi-fw pi-bookmark' },
+    //                             { label: 'Submenu 1.2.2', icon: 'pi pi-fw pi-bookmark' }
+    //                         ]
+    //                     },
+    //                 ]
+    //             },
+    //             {
+    //                 label: 'Submenu 2', icon: 'pi pi-fw pi-bookmark',
+    //                 items: [
+    //                     {
+    //                         label: 'Submenu 2.1', icon: 'pi pi-fw pi-bookmark',
+    //                         items: [
+    //                             { label: 'Submenu 2.1.1', icon: 'pi pi-fw pi-bookmark' },
+    //                             { label: 'Submenu 2.1.2', icon: 'pi pi-fw pi-bookmark' },
+    //                             { label: 'Submenu 2.1.3', icon: 'pi pi-fw pi-bookmark' },
+    //                         ]
+    //                     },
+    //                     {
+    //                         label: 'Submenu 2.2', icon: 'pi pi-fw pi-bookmark',
+    //                         items: [
+    //                             { label: 'Submenu 2.2.1', icon: 'pi pi-fw pi-bookmark' },
+    //                             { label: 'Submenu 2.2.2', icon: 'pi pi-fw pi-bookmark' }
+    //                         ]
+    //                     }
+    //                 ]
+    //             }
+    //         ]
+    //     }
+    // ];
 
     const addClass = (element, className) => {
         if (element.classList)
