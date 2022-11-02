@@ -6,7 +6,7 @@ import { Button } from "primereact/button";
 import { Toolbar } from "primereact/toolbar";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { ToggleButton } from "primereact/togglebutton";
+// import { ToggleButton } from "primereact/togglebutton";
 import { CountryService } from "../../service/CountryService";
 
 const Bank = () => {
@@ -226,24 +226,35 @@ const Bank = () => {
                                     </span>
                                 </div>
                                 <div className="col-12 md: col-3">
-                                    <Button label="Save" className="p-button-raised p-button-success p-button-text"></Button>
+                                    <div className="text-500 hover:text-700 w-12rem h-6rem surface-overlay font-bold m-2 align-tems-center jusify-content-center">
+                                        <Button label="Save" className="p-button-raised p-button-secondary p-button-text"></Button>
+                                        <Button label="Back" className="p-button-raised p-button-secondary p-button-text mt-4"></Button>
+                                    </div>
                                 </div>
-                                <div className="col-12 md: col-3">
+                                {/* <div className="col-12 md: col-3">
                                     <Button label="Back" className="p-button-raised p-button-secondary p-button-text mb-2"></Button>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
                     <div className="col-6">
-                        {/* <ToggleButton checked={idFrozen} onChange={(e) => setIdFrozen(e.value)} onIcon="pi pi-lock" offIcon="pi pi-lock-open" onLabel="Unfreeze Id" offLabel="Freeze Id" style={{ width: "10rem" }} /> */}
-
-                        <DataTable value={models} scrollable scrollHeight="400px" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
-                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll" stripedRows>
-                        <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
-                        <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
-                        <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
-                        </DataTable>
+                        <div className="card h-auto"></div>
+                            <DataTable
+                                value={models}
+                                scrollable
+                                scrollHeight="400px"
+                                paginator
+                                rows={10}
+                                rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
+                                paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                                responsiveLayout="scroll"
+                                stripedRows
+                            >
+                                <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
+                                <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
+                                <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
+                            </DataTable>
                         {/* <div className="card h-full"></div> */}
                     </div>
                 </div>
