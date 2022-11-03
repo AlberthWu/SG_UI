@@ -34,6 +34,7 @@ import FormSuratJalan from './components/menu/FormSuratJalan';
 import Crud from './pages/Crud';
 import TimelineDemo from './pages/TimelineDemo';
 import ListingSampurnaGroup from './pages/ListingSampurnaGroup';
+import Tablefr from './pages/Tablefr'
 
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
@@ -192,7 +193,7 @@ const App = () => {
                             {
                                 "label": "Customer",
                                 "icon": "HiOutlineUserGroup",
-                                "to": "/customer/list"
+                                "to": "/layoutdesign"
                             },
                             {
                                 "label": "Price List",
@@ -350,6 +351,21 @@ const App = () => {
                         "label": "Master",
                         "icon": "HiOutlineSquaresPlus",
                         "items": [
+                            {
+                                "label": "Department",
+                                "icon": "HiOutlineBuildingOffice2",
+                                "to": "/"
+                            },
+                            {
+                                "label": "Division",
+                                "icon": "HiOutlineUserGroup",
+                                "to": "/"
+                            },
+                            {
+                                "label": "Occupation",
+                                "icon": "HiOutlineUsers",
+                                "to": "/"
+                            },
                             {
                                 "label": "Bank",
                                 "icon": "HiOutlineBuildingLibrary",
@@ -729,6 +745,7 @@ const App = () => {
                     <Route path="/bank" component={Bank} />
                     <Route path="/FormSuratJalan" component={FormSuratJalan} />
                     <Route path="/layoutdesign" component={ListingSampurnaGroup} />
+                    <Route path="/tablefr" component={Tablefr} />
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />

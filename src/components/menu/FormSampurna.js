@@ -28,10 +28,10 @@ const Bank = () => {
     const [models] = useState(null);
     // const [customers2] = useState([]);
     // const [idFrozen, setIdFrozen] = useState(false);
-    // const [product, setProduct] = useState(null);
-    // const [products] = useState(null);
-    // const [setDeleteProductDialog] = useState(false);
-    // const [setProductDialog] = useState(false);
+    const [product, setProduct] = useState(null);
+    const [products] = useState(null);
+    const [setDeleteProductDialog] = useState(false);
+    const [setProductDialog] = useState(false);
 
     const businessSelectItems = [
         { label: "PT. Alam Sampurna Makmur", value: "PT. Alam Sampurna Makmur" },
@@ -123,24 +123,24 @@ const Bank = () => {
     //     return value.toLocaleString("id-ID", { style: "currency", currency: "IDR" });
     // };
 
-    // const actionBodyTemplate = (rowData) => {
-    //     return (
-    //         <React.Fragment>
-    //             <Button icon="pi pi-pencil" className="p-button-rounded p-button-success p-button-text mb-2" onClick={() => editProduct(rowData)} />
-    //             <Button icon="pi pi-trash" className="p-button-rounded p-button-warning p-button-text mb-2" onClick={() => confirmDeleteProduct(rowData)} />
-    //         </React.Fragment>
-    //     );
-    // };
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <React.Fragment>
+                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success p-button-text mb-2" onClick={() => editProduct(rowData)} />
+                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning p-button-text mb-2" onClick={() => confirmDeleteProduct(rowData)} />
+            </React.Fragment>
+        );
+    };
 
-    // const editProduct = (product) => {
-    //     setProduct({ ...product });
-    //     setProductDialog(true);
-    // };
+    const editProduct = (product) => {
+        setProduct({ ...product });
+        setProductDialog(true);
+    };
 
-    // const confirmDeleteProduct = (product) => {
-    //     setProduct(product);
-    //     setDeleteProductDialog(true);
-    // };
+    const confirmDeleteProduct = (product) => {
+        setProduct(product);
+        setDeleteProductDialog(true);
+    };
 
     const leftContents = (
         <React.Fragment>
@@ -258,6 +258,7 @@ const Bank = () => {
                                 <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
                                 <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
                             </DataTable>
+                        </div>
                         {/* <div className="card h-full"></div> */}
                     </div>
                 </div>
