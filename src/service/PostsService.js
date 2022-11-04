@@ -1,14 +1,14 @@
 import Axios from "axios";
 
-export const GetAll = async() => {
-    try {
-        const response = await Axios.get("https://jsonplaceholder.typicode.com/posts");
+// export const GetAll = async() => {
+//     try {
+//         const response = await Axios.get("https://jsonplaceholder.typicode.com/posts");
 
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-}
+//         return response.data;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 export const Post = async(data) => {
     try {
@@ -33,6 +33,16 @@ export const Put = async(id, data) => {
 export const Delete = async(id) => {
     try {
         const response = await Axios.delete("http://10.100.2.235:3004/posts/" + id);
+
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getLoket = async() => {
+    try {
+        const response = await Axios.get('assets/demo/data/loketsj.json');
 
         return response.data;
     } catch (error) {

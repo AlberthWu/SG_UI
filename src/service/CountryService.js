@@ -18,4 +18,7 @@ export class CountryService {
         return axios.get('https://jsonplaceholder.typicode.com/users')
             .then(res => res.data);
     }
+    getLoket() {
+        return axios.get('assets/demo/data/loketsj.json')
+    }
 }
