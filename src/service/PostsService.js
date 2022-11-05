@@ -1,51 +1,27 @@
-import Axios from "axios";
+import axios from 'axios';
 
-// export const GetAll = async() => {
-//     try {
-//         const response = await Axios.get("https://jsonplaceholder.typicode.com/posts");
+export class PostsService {
+    getLoket() {
+        return axios.get('assets/demo/data/loketsj.json').then(res => res.data.data);
+    }
 
-//         return response.data;
-//     } catch (error) {
-//         console.log(error);
+}
+
+
+
+// import axios from 'axios';
+
+// export class LoketService {
+
+//     getProductsSmall() {
+//         return axios.get('assets/demo/data/products-small.json').then(res => res.data.data);
+//     }
+
+//     getLokets() {
+//         return axios.get('assets/demo/data/loketsj.json').then(res => res.data.data);
+//     }
+
+//     getProductsWithOrdersSmall() {
+//         return axios.get('assets/demo/data/products-orders-small.json').then(res => res.data.data);
 //     }
 // }
-
-export const Post = async(data) => {
-    try {
-        const response = await Axios.post("http://10.100.2.235:3004/posts", data);
-
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-export const Put = async(id, data) => {
-    try {
-        const response = await Axios.put("http://10.100.2.235:3004/posts/" + id, data);
-
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-export const Delete = async(id) => {
-    try {
-        const response = await Axios.delete("http://10.100.2.235:3004/posts/" + id);
-
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-export const getLoket = async() => {
-    try {
-        const response = await Axios.get('assets/demo/data/loketsj.json');
-
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
-}

@@ -29,7 +29,9 @@ import InvalidStateDemo from './components/InvalidStateDemo';
 import BlocksDemo from './components/BlocksDemo';
 import IconsDemo from './components/IconsDemo';
 import Bank from './components/menu/FormSampurna';
-import FormSuratJalan from './components/menu/FormSuratJalan';
+// import FormSuratJalan from './components/menu/FormSuratJalan';
+
+import FormSuratJalan from './components/menu/FormSJ';
 
 import Crud from './pages/Crud';
 import TimelineDemo from './pages/TimelineDemo';
@@ -163,282 +165,282 @@ const App = () => {
     }
 
     const menu = [
-            {
-                "label": "Home",
-                "items": [
-                    {
-                        "label": "Dashboard",
-                        "icon": "HiOutlineChartBarSquare",
-                        "to": "/"
-                    }
-                ]
-            },
-            {
-                "label": "Sales",
-                "items": [
-                    {
-                        "label": "Master",
-                        "icon": "HiOutlineSquaresPlus",
-                        "items": [
-                            {
-                                "label": "Pool",
-                                "icon": "HiOutlineHome",
-                                "to": "/FormSuratJalan"
-                            },
-                            {
-                                "label": "Product",
-                                "icon": "HiOutlineCube",
-                                "to": "/bank"
-                            },
-                            {
-                                "label": "Customer",
-                                "icon": "HiOutlineUserGroup",
-                                "to": "/layoutdesign"
-                            },
-                            {
-                                "label": "Price List",
-                                "icon": "HiOutlineCurrencyDollar",
-                                "to": "/tablefr"
-                            },
-                            {
-                                "label": "Ujt List",
-                                "icon": "HiOutlineCreditCard",
-                                "to": "/sales/master/ujt/list"
-                            }
-                        ]
-                    },
-                    {
-                        "label": "Office",
-                        "icon": "HiOutlineBuildingOffice2",
-                        "items": [
-                            {
-                                "label": "PO Customer",
-                                "icon": "HiOutlineClipboardDocumentList",
-                                "to": "/sales/office/po/list"
-                            },
-                            {
-                                "label": "Invoice",
-                                "icon": "HiOutlineDocumentText",
-                                "to": "/sales/office/invoice/list"
-                            },
-                            {
-                                "label": "Invoice (Manual)",
-                                "icon": "HiOutlineDocumentPlus",
-                                "to": "/sales/office/invoice-manual/list"
-                            },
-                            {
-                                "label": "Order Manual Number",
-                                "icon": "HiOutlineCalculator",
-                                "to": "/sales/office/order-manual-number/list"
-                            }
-                        ]
-                    },
-                    {
-                        "label": "Dump Truck",
-                        "icon": "HiOutlineTruck",
-                        "items": [
-                            {
-                                "label": "Order Ujt",
-                                "icon": "HiOutlineBanknotes",
-                                "to": "/sales/dumptruck/order-ujt/list"
-                            },
-                            {
-                                "label": "Order Non Ujt",
-                                "icon": "HiOutlineCreditCard",
-                                "to": "/sales/dumptruck/order-nonujt/list"
-                            }
-                        ]
-                    },
-                    {
-                        "label": "Cargo",
-                        "icon": "HiOutlineTruck",
-                        "items": [
-                            {
-                                "label": "Order Ujt",
-                                "icon": "HiOutlineBanknotes",
-                                "to": "/sales/cargo/order-ujt/list"
-                            },
-                            {
-                                "label": "Order Non Ujt",
-                                "icon": "HiOutlineCreditCard",
-                                "to": "/sales/cargo/order-nonujt/list"
-                            }
-                        ]
-                    },
-                    {
-                        "label": "Mixer",
-                        "icon": "HiOutlineTruck",
-                        "items": [
-                            {
-                                "label": "Order Ujt",
-                                "icon": "HiOutlineBanknotes",
-                                "to": "/sales/mixer/order-ujt/list"
-                            },
-                            {
-                                "label": "Order Non Ujt",
-                                "icon": "HiOutlineCreditCard",
-                                "to": "/sales/order/order-nonujt/list"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "label": "Purchase",
-                "items": [
-                    {
-                        "label": "Master",
-                        "icon": "HiOutlineSquaresPlus",
-                        "items": [
-                            {
-                                "label": "Origin",
-                                "icon": "HiOutlineHomeModern",
-                                "to": "/purchase/master/origin/list"
-                            },
-                            {
-                                "label": "Transporter",
-                                "icon": "HiOutlineTruck",
-                                "to": "/purchase/master/transporter/list"
-                            },
-                            {
-                                "label": "Supplier",
-                                "icon": "HiOutlineShoppingCart",
-                                "to": "/purchase/master/supplier/list"
-                            },
-                            {
-                                "label": "Sparepart",
-                                "icon": "HiOutlineWrenchScrewdriver",
-                                "to": "/purchase/master/sparepart/list"
-                            },
-                            {
-                                "label": "Cost List",
-                                "icon": "HiOutlineDocumentText",
-                                "to": "/purchase/master/cost/list"
-                            }
-                        ]
-                    },
-                    {
-                        "label": "Office",
-                        "icon": "HiOutlineBuildingOffice2",
-                        "items": [
-                            {
-                                "label": "DO Origin",
-                                "icon": "HiOutlineDocumentDuplicate",
-                                "to": "/purchase/office/do-origin/list"
-                            },
-                            {
-                                "label": "Invoice",
-                                "icon": "HiOutlineDocumentText",
-                                "to": "/purchase/master/invoice/list"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "label": "Inventory",
-                // "icons": "HiOutlineClipboardDocumentList"
-            },
-            {
-                "label": "Finance",
-                // "icons": "HiOutlineChartBar"
-            },
-            {
-                "label": "Payroll",
-                // "icon": "HiOutlineIdentification",
-                "items": [
-                    {
-                        "label": "Master",
-                        "icon": "HiOutlineSquaresPlus",
-                        "items": [
-                            {
-                                "label": "Department",
-                                "icon": "HiOutlineBuildingOffice2",
-                                "to": "/"
-                            },
-                            {
-                                "label": "Division",
-                                "icon": "HiOutlineUserGroup",
-                                "to": "/"
-                            },
-                            {
-                                "label": "Occupation",
-                                "icon": "HiOutlineUsers",
-                                "to": "/"
-                            },
-                            {
-                                "label": "Bank",
-                                "icon": "HiOutlineBuildingLibrary",
-                                "to": "/bank/list"
-                            },
-                            {
-                                "label": "Fleet",
-                                "icon": "HiOutlineTruck",
-                                "to": "/fleet/list"
-                            },
-                            {
-                                "label": "UJT",
-                                "icon": "HiOutlineBanknotes",
-                                "to": "/ujt/list"
-                            },
-                            {
-                                "label": "Employee",
-                                "icon": "HiOutlineUser",
-                                "to": "/employee-list"
-                            }
-                        ]
-                    },
-                    {
-                        "label": "Office",
-                        "icon": "HiOutlineBuildingOffice2",
-                        "to": "/office"
-                    },
-                    {
-                        "label": "Driver",
-                        "icon": "HiOutlineUserCircle",
-                        "items": [
-                            {
-                                "label": "Dump Truck",
-                                "icon": "HiOutlineTruck",
-                                "to": "/dumptruck"
-                            },
-                            {
-                                "label": "Cargo",
-                                "icon": "HiOutlineTruck",
-                                "to": "/cargo"
-                            },
-                            {
-                                "label": "Mixer",
-                                "icon": "HiOutlineTruck",
-                                "to": "/mixer"
-                            }
-                        ]
-                    },
-                    {
-                        "label": "Report",
-                        "icon": "HiOutlineDocumentChartBar",
-                        "items": [
-                            {
-                                "label": "Payslip",
-                                "icon": "HiOutlineCreditCard",
-                                "to": "/payslip"
-                            },
-                            {
-                                "label": "Attendance",
-                                "icon": "HiOutlineCalendarDays",
-                                "to": "/attendance"
-                            },
-                            {
-                                "label": "Overtime",
-                                "icon": "HiOutlineClock",
-                                "to": "/overtime"
-                            }
-                        ]
-                    }
-                ]
-            },
-        ]
-    
+        {
+            "label": "Home",
+            "items": [
+                {
+                    "label": "Dashboard",
+                    "icon": "HiOutlineChartBarSquare",
+                    "to": "/"
+                }
+            ]
+        },
+        {
+            "label": "Sales",
+            "items": [
+                {
+                    "label": "Master",
+                    "icon": "HiOutlineSquaresPlus",
+                    "items": [
+                        {
+                            "label": "Pool",
+                            "icon": "HiOutlineHome",
+                            "to": "/FormSuratJalan"
+                        },
+                        {
+                            "label": "Product",
+                            "icon": "HiOutlineCube",
+                            "to": "/bank"
+                        },
+                        {
+                            "label": "Customer",
+                            "icon": "HiOutlineUserGroup",
+                            "to": "/layoutdesign"
+                        },
+                        {
+                            "label": "Price List",
+                            "icon": "HiOutlineCurrencyDollar",
+                            "to": "/tablefr"
+                        },
+                        {
+                            "label": "Ujt List",
+                            "icon": "HiOutlineCreditCard",
+                            "to": "/sales/master/ujt/list"
+                        }
+                    ]
+                },
+                {
+                    "label": "Office",
+                    "icon": "HiOutlineBuildingOffice2",
+                    "items": [
+                        {
+                            "label": "PO Customer",
+                            "icon": "HiOutlineClipboardDocumentList",
+                            "to": "/sales/office/po/list"
+                        },
+                        {
+                            "label": "Invoice",
+                            "icon": "HiOutlineDocumentText",
+                            "to": "/sales/office/invoice/list"
+                        },
+                        {
+                            "label": "Invoice (Manual)",
+                            "icon": "HiOutlineDocumentPlus",
+                            "to": "/sales/office/invoice-manual/list"
+                        },
+                        {
+                            "label": "Order Manual Number",
+                            "icon": "HiOutlineCalculator",
+                            "to": "/sales/office/order-manual-number/list"
+                        }
+                    ]
+                },
+                {
+                    "label": "Dump Truck",
+                    "icon": "HiOutlineTruck",
+                    "items": [
+                        {
+                            "label": "Order Ujt",
+                            "icon": "HiOutlineBanknotes",
+                            "to": "/sales/dumptruck/order-ujt/list"
+                        },
+                        {
+                            "label": "Order Non Ujt",
+                            "icon": "HiOutlineCreditCard",
+                            "to": "/sales/dumptruck/order-nonujt/list"
+                        }
+                    ]
+                },
+                {
+                    "label": "Cargo",
+                    "icon": "HiOutlineTruck",
+                    "items": [
+                        {
+                            "label": "Order Ujt",
+                            "icon": "HiOutlineBanknotes",
+                            "to": "/sales/cargo/order-ujt/list"
+                        },
+                        {
+                            "label": "Order Non Ujt",
+                            "icon": "HiOutlineCreditCard",
+                            "to": "/sales/cargo/order-nonujt/list"
+                        }
+                    ]
+                },
+                {
+                    "label": "Mixer",
+                    "icon": "HiOutlineTruck",
+                    "items": [
+                        {
+                            "label": "Order Ujt",
+                            "icon": "HiOutlineBanknotes",
+                            "to": "/sales/mixer/order-ujt/list"
+                        },
+                        {
+                            "label": "Order Non Ujt",
+                            "icon": "HiOutlineCreditCard",
+                            "to": "/sales/order/order-nonujt/list"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Purchase",
+            "items": [
+                {
+                    "label": "Master",
+                    "icon": "HiOutlineSquaresPlus",
+                    "items": [
+                        {
+                            "label": "Origin",
+                            "icon": "HiOutlineHomeModern",
+                            "to": "/purchase/master/origin/list"
+                        },
+                        {
+                            "label": "Transporter",
+                            "icon": "HiOutlineTruck",
+                            "to": "/purchase/master/transporter/list"
+                        },
+                        {
+                            "label": "Supplier",
+                            "icon": "HiOutlineShoppingCart",
+                            "to": "/purchase/master/supplier/list"
+                        },
+                        {
+                            "label": "Sparepart",
+                            "icon": "HiOutlineWrenchScrewdriver",
+                            "to": "/purchase/master/sparepart/list"
+                        },
+                        {
+                            "label": "Cost List",
+                            "icon": "HiOutlineDocumentText",
+                            "to": "/purchase/master/cost/list"
+                        }
+                    ]
+                },
+                {
+                    "label": "Office",
+                    "icon": "HiOutlineBuildingOffice2",
+                    "items": [
+                        {
+                            "label": "DO Origin",
+                            "icon": "HiOutlineDocumentDuplicate",
+                            "to": "/purchase/office/do-origin/list"
+                        },
+                        {
+                            "label": "Invoice",
+                            "icon": "HiOutlineDocumentText",
+                            "to": "/purchase/master/invoice/list"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Inventory",
+            // "icons": "HiOutlineClipboardDocumentList"
+        },
+        {
+            "label": "Finance",
+            // "icons": "HiOutlineChartBar"
+        },
+        {
+            "label": "Payroll",
+            // "icon": "HiOutlineIdentification",
+            "items": [
+                {
+                    "label": "Master",
+                    "icon": "HiOutlineSquaresPlus",
+                    "items": [
+                        {
+                            "label": "Department",
+                            "icon": "HiOutlineBuildingOffice2",
+                            "to": "/"
+                        },
+                        {
+                            "label": "Division",
+                            "icon": "HiOutlineUserGroup",
+                            "to": "/"
+                        },
+                        {
+                            "label": "Occupation",
+                            "icon": "HiOutlineUsers",
+                            "to": "/"
+                        },
+                        {
+                            "label": "Bank",
+                            "icon": "HiOutlineBuildingLibrary",
+                            "to": "/bank/list"
+                        },
+                        {
+                            "label": "Fleet",
+                            "icon": "HiOutlineTruck",
+                            "to": "/fleet/list"
+                        },
+                        {
+                            "label": "UJT",
+                            "icon": "HiOutlineBanknotes",
+                            "to": "/ujt/list"
+                        },
+                        {
+                            "label": "Employee",
+                            "icon": "HiOutlineUser",
+                            "to": "/employee-list"
+                        }
+                    ]
+                },
+                {
+                    "label": "Office",
+                    "icon": "HiOutlineBuildingOffice2",
+                    "to": "/office"
+                },
+                {
+                    "label": "Driver",
+                    "icon": "HiOutlineUserCircle",
+                    "items": [
+                        {
+                            "label": "Dump Truck",
+                            "icon": "HiOutlineTruck",
+                            "to": "/dumptruck"
+                        },
+                        {
+                            "label": "Cargo",
+                            "icon": "HiOutlineTruck",
+                            "to": "/cargo"
+                        },
+                        {
+                            "label": "Mixer",
+                            "icon": "HiOutlineTruck",
+                            "to": "/mixer"
+                        }
+                    ]
+                },
+                {
+                    "label": "Report",
+                    "icon": "HiOutlineDocumentChartBar",
+                    "items": [
+                        {
+                            "label": "Payslip",
+                            "icon": "HiOutlineCreditCard",
+                            "to": "/payslip"
+                        },
+                        {
+                            "label": "Attendance",
+                            "icon": "HiOutlineCalendarDays",
+                            "to": "/attendance"
+                        },
+                        {
+                            "label": "Overtime",
+                            "icon": "HiOutlineClock",
+                            "to": "/overtime"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+
     // const menu = [
     //     {
     //         label: 'Home',
@@ -560,7 +562,7 @@ const App = () => {
     //             },
     //         ]
     //     },
-        
+
     //     {
     //         label: 'FINANCE',
     //         items: [
