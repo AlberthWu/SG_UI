@@ -204,7 +204,7 @@ const ListingSampurnaGroup = () => {
         return (
             <React.Fragment>
                 {/* <Button label="New" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} /> */}
-                <Button label="New" className="p-button-raised p-button-success p-button-text" onClick={openNew} />
+                <Button label="New" className="p-button-raised p-button-success p-button-text w-full" onClick={openNew} />
                 <Button label="Delete" icon="pi pi-trash" className="p-button-danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} />
             </React.Fragment>
         )

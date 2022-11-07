@@ -31,6 +31,10 @@ import IconsDemo from './components/IconsDemo';
 import Bank from './components/menu/FormSampurna';
 import FormSuratJalan from './components/menu/FormSuratJalan';
 
+import OrderDetailCargo from './containers/Cargo/OrderDetailCargo';
+import OrderListCargo from './containers/Cargo/OrderListCargo';
+
+import LoginPage from './pages/LoginPage';
 import Crud from './pages/Crud';
 import TimelineDemo from './pages/TimelineDemo';
 import ListingSampurnaGroup from './pages/ListingSampurnaGroup';
@@ -63,7 +67,7 @@ const App = () => {
     const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false);
     const copyTooltipRef = useRef();
     const location = useLocation();
-
+    
     PrimeReact.ripple = true;
 
     let menuClick = false;
@@ -256,7 +260,7 @@ const App = () => {
                             {
                                 "label": "Order Ujt",
                                 "icon": "HiOutlineBanknotes",
-                                "to": "/sales/cargo/order-ujt/list"
+                                "to": "/OrderCargo"
                             },
                             {
                                 "label": "Order Non Ujt",
@@ -746,6 +750,10 @@ const App = () => {
                     <Route path="/FormSuratJalan" component={FormSuratJalan} />
                     <Route path="/layoutdesign" component={ListingSampurnaGroup} />
                     <Route path="/tablefr" component={Tablefr} />
+                    <Route path="/login" component={LoginPage}/>
+
+                    <Route path="/OrderCargo" component={OrderDetailCargo}/>
+                    <Route path="/OrderListCargo" component={OrderListCargo}/>
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />

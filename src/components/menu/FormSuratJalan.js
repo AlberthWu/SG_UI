@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
-// import { TabMenu } from "primereact/tabmenu";
+import React, { useState, useRef } from "react";
 import { Dropdown } from "primereact/dropdown";
+import { AutoComplete } from "primereact/autocomplete";
+import { Fieldset } from 'primereact/fieldset';
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
@@ -13,12 +14,12 @@ import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 // import { InputSwitch } from 'primereact/inputswitch';
 // import { CiHome } from "react-icons/ci";
-import * as Service from "../../service/PostsService";
-
+// import * as Service from "../../service/PostsService";
+// import { CountryService } from "../../service/CountryService";
 
 const FormSuratJalan = () => {
     const toast = useRef(null);
-    const [models, setModels] = useState(null);
+    const [models] = useState(null);
 
     let emptyProduct = {
         id: null,
@@ -32,15 +33,22 @@ const FormSuratJalan = () => {
         inventoryStatus: "INSTOCK",
     };
 
-    useEffect(() => {
-        GetAll();
-    });
+    // useEffect(() => {
+    //     const countryService = new CountryService();
+    //     countryService.getLoket().then((res) => {
+    //         setLokets(res);
+    //     });
+    // }, []);
 
-    const GetAll = async () => {
-        const response = await Service.GetAll();
+    // useEffect(() => {
+    //     getLoket();
+    // });
 
-        setModels(response);
-    };
+    // const getLoket = async () => {
+    //     const response = await Service.getLoket();
+
+    //     setModels(response.data);
+    // };
 
     const [product, setProduct] = useState(null);
     const [products, setProducts] = useState(emptyProduct);
@@ -49,9 +57,141 @@ const FormSuratJalan = () => {
     // const [setDeleteProductsDialog] = useState(false);
     const [setProductDialog] = useState(false);
     // const [activeIndex, setActiveIndex] = useState(0);
-    const [value6, setValue6] = useState("");
+    const [loket, setLoket] = useState([]);
+    const [lokets] = useState([]);
+
+    const [jenisOrders, setjenisOrders] = useState([]);
+    const [jenisOrder, setjenisOrder] = useState(null);
+    const [filteredJenisOrder, setfilteredJenisOrder] = useState(null);
+
+    const [namaSTNKs, setnamaSTNKs] = useState([]);
+    const [namaSTNK, setnamaSTNK] = useState(null);
+    const [filterednamaSTNK, setfilterednamaSTNK] = useState(null);
+
+    const [driver, setDriver] = useState([]);
+    const [drivers, setDrivers] = useState(null);
+    const [filtereddriver, setfilteredDriver] = useState(null);
+
+    const [namaRekenings, setnamaRekenings] = useState([]);
+    const [namaRekening, setnamaRekening] = useState(null);
+    const [filterednamaRekening, setfilterednamaRekening] = useState(null);
+    
+    const [NoSchedule, setNoSchedule] = useState("");
+    const [TglSchedule, setTglSchedule] = useState("");
+    const [ExpSchedule, setExpSchedule] = useState("");
+
+    const [TglGPS, setTglGPS] = useState("");
+    const [UpdateGPS, setUpdateGPS] = useState("");
+    const [dropdownValue, setDropdownValue] = useState(null);
+    const [dropdownShift, setDropdownShift] = useState(null);
+    
+    const [dropdownStatus, setDropdownStatus] = useState(null);
     const dt = useRef(null);
     // const [checked1, setChecked1] = useState(false);
+
+    // const searchLoket = (event) => {
+    //     const filtered = [];
+    //     const query = event.query;
+    //     for (let i = 0; i < lokets.length; i++) {
+    //         const data = lokets[i];
+    //         if (data.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+    //             filtered.push(data);
+    //         }
+    //     }
+    //     setFilteredLoket(filtered);
+    // };
+
+    const dropdownValues = [
+        { name: "A", code: "A" },
+        { name: "B", code: "B" },
+        { name: "C", code: "C" },
+        { name: "D", code: "D" },
+        { name: "E", code: "E" },
+    ];
+
+    const dropdownValuesShifts = [
+        { name: "1", code: "1" },
+        { name: "2", code: "2" },
+        { name: "3", code: "3" },
+    ];
+
+    const searchJenisOrder = (event) => {
+        const filtered = [];
+        const query = event.query;
+        for (let i = 0; i < jenisOrders.length; i++) {
+            const data = jenisOrders[i];
+            if (data.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+                filtered.push(data);
+            }
+        }
+        setfilteredJenisOrder(filtered);
+    };
+
+    const searchNamaSTNK = (event) => {
+        const filtered = [];
+        const query = event.query;
+        for (let i = 0; i < namaSTNKs.length; i++) {
+            const data = namaSTNKs[i];
+            if (data.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+                filtered.push(data);
+            }
+        }
+        setfilterednamaSTNK(filtered);
+    };
+
+    const searchDriver = (event) => {
+        const filtered = [];
+        const query = event.query;
+        for (let i = 0; i < drivers.length; i++) {
+            const data = drivers[i];
+            if (data.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+                filtered.push(data);
+            }
+        }
+        setfilteredDriver(filtered);
+    };
+
+    const searchNamaRekening = (event) => {
+        const filtered = [];
+        const query = event.query;
+        for (let i = 0; i < namaRekenings.length; i++) {
+            const data = namaRekenings[i];
+            if (data.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+                filtered.push(data);
+            }
+        }
+        setfilterednamaRekening(filtered);
+    };
+
+
+    const dropdownValuesStatus = [
+        { name: "Utama", code: "1" },
+        { name: "Serep", code: "2" },
+    ];
+
+    // const dropdownValuesJO = [
+    //     { name: "Dumptruck Dutro", code: "DTR" },
+    //     { name: "Dumptruck Engkel", code: "DTE" },
+    //     { name: "Dumptruck Tronton", code: "DTT" },
+    //     { name: "Mixer", code: "MXR" },
+    //     { name: "Wingbox", code: "WBB" },
+    //     { name: "Trailer", code: "TRL" },
+    //     { name: "Colt Diesel Double", code: "CDD" },
+    //     { name: "Tronton Box", code: "TRB" },
+    //     { name: "Crane", code: "CRN" },
+    // ];
+
+    // const searchLoket = (event) => {
+    //     const filtered = [];
+    //     const query = event.query;
+    //     for (let i = 0; i < lokets.length; i++) {
+    //         const data = lokets[i];
+    //         if (data.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+    //             filtered.push(data);
+    //         }
+    //     }
+    //     setFilteredLoket(filtered);
+    // };
 
     const openNew = () => {
         setProduct(emptyProduct);
@@ -64,7 +204,7 @@ const FormSuratJalan = () => {
     //     if (!CircumIcons) return <p></p>
     //     return <CircumIcons/>;
     // };
-    
+
     // const setIconMenu=(icon) =>{
     //     const iconType = icon.substring(0,2).toLowerCase();
     //     if (iconType === "pi"){
@@ -227,73 +367,100 @@ const FormSuratJalan = () => {
 
     return (
         <div>
-            {/* <TabMenu model={items} className="mb-2" activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} /> */}
             <div className="card p-fluid">
-            <Toolbar left={leftContents}/>
-                <h5>Form Surat Jalan</h5>
-                <div className="field grid">
-                    <label htmlFor="name3" className="col-12 mb-0 md:col-2 md:mb-0">
-                        No. Schedule
-                    </label>
-                    <div className="col-12 md:col-3">
-                        <InputText id="NoSchedule" type="text" />
+                <Toolbar left={leftContents} />
+                <Fieldset legend=" Input Surat Jalan" className="h-full mt-4">
+                    <div className="field grid">
+                        <div className="field col-12 md:col-6">
+                            <label htmlFor="name2">No. Schedule</label>
+                            <InputText id="NoSchedule" value={NoSchedule} onChange={(e) => setNoSchedule(e.value)} type="text" />
+                        </div>
                     </div>
-                </div>
 
-                <div className="field grid">
-                    <label htmlFor="calendar" className="col-12 mb-0 md:col-2 md:mb-0">
-                        Tgl. Schedule
-                    </label>
-                    <div className="col-12 md:col-3">
-                        <Calendar inputId="calendar" value={value6} onChange={(e) => setValue6(e.value)} className="p-invalid" showIcon />
+                    <div className="field grid">
+                        <div className= " field col-12 md:col-3 ">
+                            <label htmlFor= "calendar">Tanggal Schedule</label>
+                            <Calendar inputId= "calendar" value={TglSchedule} onChange={(e) => setTglSchedule(e.value)} showIcon />
+                        </div>
+                        <div className= " field col-12 md:col-3 ">
+                            <label htmlFor="calendar">Masa Berakhir Schedule</label>
+                            <Calendar inputId="calendar" value={ExpSchedule} onChange={(e) => setExpSchedule(e.value)} showIcon />
+                        </div>
                     </div>
-                </div>
 
-                <div className="field grid">
-                    <label htmlFor="loket" className="col-6 mb-0 md:col-2 md:mb-0">
-                        Loket
-                    </label>
-                    <div className="col-12 md:col-3">
-                        <Dropdown id="Loket" optionLabel="Business"></Dropdown>
+                    <div className="field grid">
+                        <div className="field col-12 md:col-6">
+                            <label htmlFor="loket">Loket</label>
+                            <Dropdown id="Loket" dropdown value={dropdownValue} onChange={(e) => setDropdownValue(e.value)} options={dropdownValues} optionLabel="name" placeholder="A/B/C/D/E" />
+                        </div>
                     </div>
-                </div>
-                <div className="field grid">
-                    <label htmlFor="shift" className="col-6 mb-0 md:col-2 md:mb-0">
-                        Shift
-                    </label>
-                    <div className="col-12 md:col-3">
-                        <Dropdown id="Shift" optionLabel="Business"></Dropdown>
-                    </div>
-                </div>
 
-                <div className="field grid">
-                    <label htmlFor="shift" className="col-6 mb-2 md:col-2 md:mb-0">
-                        Jenis Order
-                    </label>
-                    <div className="col-12 md:col-3">
-                        <Dropdown id="Shift" optionLabel="Business"></Dropdown>
+                    <div className="field grid">
+                        <div className="field col-12 md:col-6">
+                            <label htmlFor="shift">Shift</label>
+                            <Dropdown id="Shift" dropdown value={dropdownShift} onChange={(e) => setDropdownShift(e.value)} options={dropdownValuesShifts} optionLabel="name" placeholder="1/2/3" />
+                        </div>
+                        <div className="field col-12 md:col-3">
+                            <label htmlFor="calendar">Tanggal GPS</label>
+                            <Calendar inputId="calendar" value={TglGPS} onChange={(e) => setTglGPS(e.value)} showIcon />
+                        </div>
+                        <div className="field col-12 md:col-3">
+                            <label htmlFor="calendar">Pembaharuan GPS</label>
+                            <Calendar inputId="calendar" value={UpdateGPS} onChange={(e) => setUpdateGPS(e.value)} showIcon />
+                        </div>
                     </div>
-                </div>
 
-                <div className="field grid">
-                    <label htmlFor="name3" className="col-12 mb-2 md:col-2 md:mb-0">
-                        No. Plat
-                    </label>
-                    <div className="col-12 md:col-7">
-                        <Dropdown id="Shift" optionLabel="Business"></Dropdown>
+                    <div className="field grid">
+                        <div className="field col-12 md:col-6">
+                            <label htmlFor="jenisorder">Jenis Order</label>
+                            <AutoComplete id="autocomplete" dropdown value={jenisOrder} onChange={(e) => setjenisOrder(e.value)} suggestions={filteredJenisOrder} completeMethod={searchJenisOrder} field="name"></AutoComplete>
+                        </div>
+                        <div className="field col-12 md:col-3">
+                            <label htmlFor="loket">Driver</label>
+                            <AutoComplete id="autocomplete" dropdown value={driver} onChange={(e) => setDriver(e.value)} suggestions={filtereddriver} completeMethod={searchDriver} field="name"></AutoComplete>
+                        </div>
+                        <div className="field col-12 md:col-3">
+                            <label htmlFor="status">Status</label>
+                            <Dropdown id="Status" dropdown value={dropdownStatus} onChange={(e) => setDropdownStatus(e.value)} options={dropdownValuesStatus} optionLabel="name" placeholder="Utama/Serep" />
+                        </div>
                     </div>
-                    <div className="col-12 md:col-3">
-                        <InputText id="Plat No" type="text" />
+
+                    <div className="field grid">
+                        <div className="field col-12 md:col-4">
+                            <label htmlFor="name3">Nama Pemilik STNK</label>
+                            <AutoComplete id="autocomplete" dropdown value={namaSTNK} onChange={(e) => setnamaSTNK(e.value)} suggestions={filterednamaSTNK} completeMethod={searchNamaSTNK} field="name"></AutoComplete>
+                        </div>
+                        <div className="field col-12 md:col-2">
+                            <label>Nomor Plat</label>
+                            <InputText id="Plat No" type="text" />
+                        </div>
+                        <div className="field col-12 md:col-4">
+                            <label htmlFor="reason">Nama Pemilik Rekening</label>
+                            <AutoComplete id="autocomplete" dropdown value={namaRekening} onChange={(e) => setnamaRekening(e.value)} suggestions={filterednamaRekening} completeMethod={searchNamaRekening} field="name"></AutoComplete>
+                            {/* <InputText id="reason" type="text" /> */}
+                        </div>
+                        <div className="field col-12 md:col-2">
+                            <label htmlFor="reason">Nomor Rekening</label>
+                            <InputText id="reason" type="text" />
+                        </div>
                     </div>
-                    {/* <div><Button type="button" onClick={showConfirm} label="Confirm" className="ui-button-warning" /></div> */}
-                </div>
+                </Fieldset>
             </div>
             <Accordion activeIndex={0}>
                 <AccordionTab header="Surat Jalan">
                     <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                    <DataTable value={models} scrollable scrollHeight="400px" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
-                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll" stripedRows>
+                    <DataTable
+                        value={models}
+                        scrollable
+                        scrollHeight="400px"
+                        paginator
+                        rows={10}
+                        rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
+                        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                        responsiveLayout="scroll"
+                        stripedRows
+                    >
                         <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
                         <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
                         <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
@@ -311,9 +478,17 @@ const FormSuratJalan = () => {
                 </AccordionTab>
                 <AccordionTab header="Produk">
                     <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                    <DataTable value={models} scrollable scrollHeight="400px" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
-                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
+                    <DataTable
+                        value={models}
+                        scrollable
+                        scrollHeight="400px"
+                        paginator
+                        rows={10}
+                        rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
+                        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                        responsiveLayout="scroll"
+                    >
                         <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
                         <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
                         <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
@@ -331,9 +506,17 @@ const FormSuratJalan = () => {
                 </AccordionTab>
                 <AccordionTab header="History Modal">
                     <Toolbar className="mb-2" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                    <DataTable value={models} scrollable scrollHeight="400px" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
-                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
+                    <DataTable
+                        value={models}
+                        scrollable
+                        scrollHeight="400px"
+                        paginator
+                        rows={10}
+                        rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
+                        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                        responsiveLayout="scroll"
+                    >
                         <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
                         <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
                         <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
@@ -353,6 +536,7 @@ const FormSuratJalan = () => {
         </div>
     );
 };
+
 const comparisonFn = function (prevProps, nextProps) {
     return prevProps.location.pathname === nextProps.location.pathname;
 };
