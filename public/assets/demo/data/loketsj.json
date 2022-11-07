@@ -2,6 +2,6 @@
     "data": [ 
         {"name": "A", "code": "A"},
         {"name": "B", "code": "B"},
-        {"name": "C", "code": "C"}
+        {"name": "C", "code": "C"},
     ]
 }

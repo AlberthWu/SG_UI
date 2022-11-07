@@ -160,8 +160,8 @@ const Bank = () => {
             const data = districts[i];
             if (data.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
                 filtered.push(data);
-            }
-        }
+            };
+        };
         setFilteredDistrict(filtered);
     };
 
@@ -172,8 +172,8 @@ const Bank = () => {
             const data = states[i];
             if (data.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
                 filtered.push(data);
-            }
-        }
+            };
+        };
         setFilteredState(filtered);
     };
 

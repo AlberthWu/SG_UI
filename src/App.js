@@ -202,7 +202,7 @@ const App = () => {
                             {
                                 "label": "Price List",
                                 "icon": "HiOutlineCurrencyDollar",
-                                "to": "/sales/master/price/list"
+                                "to": "/tablefr"
                             },
                             {
                                 "label": "Ujt List",
