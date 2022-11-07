@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames'
 
 export const AppTopbar = (props) => {
+    
 
     return (
         <div className="layout-topbar">
@@ -34,11 +35,11 @@ export const AppTopbar = (props) => {
                     </li>
                     <li>
                         <button className="p-link layout-topbar-button" onClick={props.onMobileSubTopbarMenuClick}>
-                            <i className="pi pi-user"/>
+                            <i className="pi pi-user" to="/LoginPage" />
                             <span>Profile</span>
                         </button>
                     </li>
                 </ul>
         </div>
     );
-}
+};

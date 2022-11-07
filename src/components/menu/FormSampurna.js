@@ -28,10 +28,11 @@ const Bank = () => {
     const [models] = useState(null);
     // const [customers2] = useState([]);
     // const [idFrozen, setIdFrozen] = useState(false);
-    const [product, setProduct] = useState(null);
-    const [products] = useState(null);
+    const [setProduct] = useState(null);
+    // const [products] = useState(null);
     const [setDeleteProductDialog] = useState(false);
     const [setProductDialog] = useState(false);
+    const [value1, setValue1] = useState("");
 
     const businessSelectItems = [
         { label: "PT. Alam Sampurna Makmur", value: "PT. Alam Sampurna Makmur" },
@@ -183,63 +184,74 @@ const Bank = () => {
                     <Toolbar left={leftContents} className="mb-3" />
                 </div>
                 <div className="grid">
-                    <div className="col-6">
+                    <div className="col-4">
                         <div className="card p-fluid">
                             <div className="col-12">
                                 <h5>Bank</h5>
-                                <div className="field">
+                                
+                                <div className="field grid">
                                     <div className="col-12">
-                                        <InputText type="text" placeholder="Name"></InputText>
+                                        <label htmlFor="name2">Nama Bank</label>
+                                        <InputText id="NamaBank" value={value1} onChange={(e) => setValue1(e.value)} type="text" />
                                     </div>
                                 </div>
 
-                                <div className="field">
+                                <div className="field grid">
                                     <div className="col-12">
-                                        <InputText type="text" placeholder="Swift Code"></InputText>
+                                        <label htmlFor="name2">Kode Tukar</label>
+                                        <InputText id="SwiftCode" value={value1} onChange={(e) => setValue1(e.value)} placeholder="Swift Code" type="text" />
                                     </div>
                                 </div>
 
-                                <h5>City</h5>
-                                <div className="field col-12">
-                                    <span className="p-float-label">
+                                <div className="field grid">
+                                    <div className="field col-12">
+                                        <label htmlFor="City">Kota</label>
                                         <AutoComplete id="autocomplete" dropdown value={city} onChange={(e) => setCity(e.value)} suggestions={filteredCity} completeMethod={searchCity} field="name"></AutoComplete>
-                                    </span>
-                                </div>
-
-                                <h5>District</h5>
-                                <div className="field col-12">
-                                    <span className="p-float-label">
-                                        <AutoComplete id="autocomplete" dropdown value={district} onChange={(e) => setDistrict(e.value)} suggestions={filteredDistrict} completeMethod={searchDistrict} field="name"></AutoComplete>
-                                    </span>
-                                </div>
-
-                                <h5>State</h5>
-                                <div className="field col-12">
-                                    <span className="p-float-label">
-                                        <AutoComplete id="autocomplete" dropdown value={state} onChange={(e) => setState(e.value)} suggestions={filteredState} completeMethod={searchState} field="name"></AutoComplete>
-                                    </span>
-                                </div>
-
-                                <h5>Business Unit</h5>
-                                <div className="field col-12">
-                                    <span className="p-float-label">
-                                        <MultiSelect display="chip" optionLabel="value" value={business} options={businessData} onChange={(e) => setBusiness(e.value)} />
-                                    </span>
-                                </div>
-                                <div className="col-12 md: col-3">
-                                    <div className="text-500 hover:text-700 w-12rem h-6rem surface-overlay font-bold m-2 align-tems-center jusify-content-center">
-                                        <Button label="Save" className="p-button-raised p-button-secondary p-button-text"></Button>
-                                        <Button label="Back" className="p-button-raised p-button-secondary p-button-text mt-4"></Button>
                                     </div>
                                 </div>
-                                {/* <div className="col-12 md: col-3">
-                                    <Button label="Back" className="p-button-raised p-button-secondary p-button-text mb-2"></Button>
+
+                                <div className="field grid">
+                                    <div className="field col-12">
+                                        <label htmlFor="City">Wilayah</label>
+                                        <AutoComplete id="autocomplete" dropdown value={district} onChange={(e) => setDistrict(e.value)} suggestions={filteredDistrict} completeMethod={searchDistrict} field="name"></AutoComplete>
+                                    </div>
+                                </div>
+
+                                <div className="field grid">
+                                    <div className="field col-12">
+                                        <label htmlFor="State">Negara</label>
+                                        <AutoComplete id="autocomplete" dropdown value={state} onChange={(e) => setState(e.value)} suggestions={filteredDistrict} completeMethod={searchState} field="name"></AutoComplete>
+                                    </div>
+                                </div>
+
+                                <div className="field grid">
+                                    <div className="field col-12">
+                                        <label htmlFor="BusinessUnit">Unit Bisnis</label>
+                                        <MultiSelect display="chip" optionLabel="value" value={business} options={businessData} onChange={(e) => setBusiness(e.value)} />
+                                    </div>
+                                </div>
+
+                                <div className="field grid">
+                                    <div className="field col-12">
+                                        <div className="col-12 md: col-3">
+                                            <Button label="Save" className="p-button-raised p-button-secondary p-button-text"></Button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 {/* <div className="field grid">
+                                    <div className="field col-12">
+                                        <div className="text-500 hover:text-700 w-12rem h-6rem surface-overlay font-bold m-2 align-tems-center jusify-content-center">
+                                            <Button label="Save" className="p-button-raised p-button-secondary p-button-text "></Button>
+                                            <Button label="Back" className="p-button-raised p-button-secondary p-button-text mt-4"></Button>
+                                        </div>
+                                    </div>
                                 </div> */}
                             </div>
                         </div>
                     </div>
                     {/* <div className="col-6"> */}
-                    <div className="col-12 xl:col-6">
+                    <div className="col-12 xl:col-8">
                         <div className="card">
                             <h5>Recent Bank</h5>
                             <DataTable
@@ -254,8 +266,12 @@ const Bank = () => {
                                 responsiveLayout="scroll"
                                 stripedRows
                             >
-                                <Column field="title" header="Title" filter filterPlaceholder="Search by title" style={{ minWidth: "%" }} />
-                                <Column field="body" header="Body" headerStyle={{ width: "%" }} filter sortable></Column>
+                                <Column field="Nama Bank" header="Nama Bank" filter sortable filterPlaceholder="Search by bank" style={{ minWidth: "8rem" }} />
+                                <Column field="Kode Tukar" header="Kode Tukar" headerStyle={{ width: "4rem" }} filter sortable></Column>
+                                <Column field="Kota" header="Kota" filter sortable style={{ minWidth: '6rem' }}></Column>
+                                <Column field="Wilayah" header="Wilayah" filter sortable style={{ minWidth: '6rem' }}></Column>
+                                <Column field="Negara" header="Negara" filter sortable style={{ minWidth: '6rem' }}></Column>
+                                <Column field="Unit Bisnis" header="Unit Bisnis" filter sortable style={{ minWidth: '%' }}></Column>
                                 <Column body={actionBodyTemplate} exportable={true} style={{ minWidth: "8rem" }}></Column>
                             </DataTable>
                         </div>
