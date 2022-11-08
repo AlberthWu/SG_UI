@@ -36,7 +36,6 @@ import OrderDetailUJTCargo from './containers/Cargo/OrderDetailUJTCargo';
 import OrderListNonUJTCargo from './containers/Cargo/OrderListNonUJTCargo';
 import OrderDetailNonUJTCargo from './containers/Cargo/OrderDetailNonUJTCargo';
 
-// import LoginPage from './pages/LoginPage';
 import Crud from './pages/Crud';
 import TimelineDemo from './pages/TimelineDemo';
 import ListingSampurnaGroup from './pages/ListingSampurnaGroup';
@@ -68,7 +67,7 @@ const App = () => {
     const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false);
     const copyTooltipRef = useRef();
     const location = useLocation();
-
+    
     PrimeReact.ripple = true;
 
     let menuClick = false;
@@ -261,7 +260,9 @@ const App = () => {
                             {
                                 "label": "Order Ujt",
                                 "icon": "HiOutlineBanknotes",
+
                                 "to": "/sales/cargo/ListUJTCargo"
+
                             },
                             {
                                 "label": "Order Non Ujt",
@@ -756,6 +757,7 @@ const App = () => {
                     <Route path="/sales/cargo/nonujt" component={OrderDetailNonUJTCargo}/>
                     <Route path="/sales/cargo/ListUJTCargo" component={OrderListUJTCargo}/>
                     <Route path="/sales/cargo/ListNonUJTCargo" component={OrderListNonUJTCargo}/>
+                    <Route path="/login" component={LoginPage}/>
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />

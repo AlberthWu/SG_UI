@@ -224,7 +224,7 @@
   padding: 0.25rem 0.5rem;
 }
 .p-autocomplete .p-autocomplete-multiple-container:not(.p-disabled):hover {
-  border-color: #64B5F6;
+  border-color: #00000000;
 }
 .p-autocomplete .p-autocomplete-multiple-container:not(.p-disabled).p-focus {
   outline: 0 none;
@@ -277,11 +277,11 @@
 }
 .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover {
   color: rgba(255, 255, 255, 0.87);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.03);
 }
 .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item.p-highlight {
   color: rgba(255, 255, 255, 0.87);
-  background: rgba(100, 181, 246, 0.16);
+  background: rgba(0, 0, 0, 0);
 }
 .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item-group {
   margin: 0;
