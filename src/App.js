@@ -31,6 +31,12 @@ import IconsDemo from './components/IconsDemo';
 import Bank from './components/menu/FormSampurna';
 import FormSuratJalan from './components/menu/FormSuratJalan';
 
+import OrderListUJTCargo from './containers/Cargo/OrderListUJTCargo';
+import OrderDetailUJTCargo from './containers/Cargo/OrderDetailUJTCargo';
+import OrderListNonUJTCargo from './containers/Cargo/OrderListNonUJTCargo';
+import OrderDetailNonUJTCargo from './containers/Cargo/OrderDetailNonUJTCargo';
+
+// import LoginPage from './pages/LoginPage';
 import Crud from './pages/Crud';
 import TimelineDemo from './pages/TimelineDemo';
 import ListingSampurnaGroup from './pages/ListingSampurnaGroup';
@@ -50,7 +56,6 @@ import './assets/demo/flags/flags.css';
 import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
 import './App.scss';
-
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -187,7 +192,7 @@ const App = () => {
                             },
                             {
                                 "label": "Product",
-                                "icon": "HiOutlineCube",
+                                "icon": "HiOutlineShoppingCart",
                                 "to": "/bank"
                             },
                             {
@@ -251,23 +256,23 @@ const App = () => {
                     },
                     {
                         "label": "Cargo",
-                        "icon": "HiOutlineTruck",
+                        "icon": "HiOutlineCube",
                         "items": [
                             {
                                 "label": "Order Ujt",
                                 "icon": "HiOutlineBanknotes",
-                                "to": "/sales/cargo/order-ujt/list"
+                                "to": "/sales/cargo/ListUJTCargo"
                             },
                             {
                                 "label": "Order Non Ujt",
                                 "icon": "HiOutlineCreditCard",
-                                "to": "/sales/cargo/order-nonujt/list"
+                                "to": "/sales/cargo/nonujt"
                             }
                         ]
                     },
                     {
                         "label": "Mixer",
-                        "icon": "HiOutlineTruck",
+                        "icon": "HiOutlineBeaker",
                         "items": [
                             {
                                 "label": "Order Ujt",
@@ -404,12 +409,12 @@ const App = () => {
                             },
                             {
                                 "label": "Cargo",
-                                "icon": "HiOutlineTruck",
+                                "icon": "HiOutlineCube",
                                 "to": "/cargo"
                             },
                             {
                                 "label": "Mixer",
-                                "icon": "HiOutlineTruck",
+                                "icon": "HiOutlineBeaker",
                                 "to": "/mixer"
                             }
                         ]
@@ -746,6 +751,11 @@ const App = () => {
                     <Route path="/FormSuratJalan" component={FormSuratJalan} />
                     <Route path="/layoutdesign" component={ListingSampurnaGroup} />
                     <Route path="/tablefr" component={Tablefr} />
+
+                    <Route path="/sales/cargo/ujt" component={OrderDetailUJTCargo}/>
+                    <Route path="/sales/cargo/nonujt" component={OrderDetailNonUJTCargo}/>
+                    <Route path="/sales/cargo/ListUJTCargo" component={OrderListUJTCargo}/>
+                    <Route path="/sales/cargo/ListNonUJTCargo" component={OrderListNonUJTCargo}/>
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />
