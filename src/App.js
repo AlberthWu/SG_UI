@@ -43,6 +43,9 @@ import Tablefr from './pages/Tablefr'
 
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
+
+import * as HiIcons from "react-icons/hi2";
+
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { library } from "@fortawesome/fontawesome-svg-core"
 // import { faFile, faBuilding } from "@fortawesome/free-regular-svg-icons";
@@ -757,7 +760,7 @@ const App = () => {
                     <Route path="/sales/cargo/nonujt" component={OrderDetailNonUJTCargo}/>
                     <Route path="/sales/cargo/ListUJTCargo" component={OrderListUJTCargo}/>
                     <Route path="/sales/cargo/ListNonUJTCargo" component={OrderListNonUJTCargo}/>
-                    <Route path="/login" component={LoginPage}/>
+                    {/* <Route path="/login" component={LoginPage}/> */}
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />

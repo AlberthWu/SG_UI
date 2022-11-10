@@ -5,6 +5,7 @@ import { AutoComplete } from "primereact/autocomplete";
 import { Fieldset } from 'primereact/fieldset';
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
+import { InputSwitch } from "primereact/inputswitch";
 import { Toolbar } from "primereact/toolbar";
 import { Button } from "primereact/button";
 
@@ -37,6 +38,8 @@ const OrderDetailUJTCargo = () => {
     const [dropdownValue, setDropdownValue] = useState(null);
     const [dropdownShift, setDropdownShift] = useState(null);
     const [dropdownStatus, setDropdownStatus] = useState(null);
+
+    const [checked1, setChecked1] = useState(false);
 
     const dt = useRef(null);
     
@@ -107,17 +110,11 @@ const OrderDetailUJTCargo = () => {
         setfilterednamaRekening(filtered);
     };
 
-    // const openNew = () => {
-    //     setProduct(emptyProduct);
-    //     setSubmitted(false);
-    //     setProductDialog(true);
-    // };
-
     const backURL = () => {
         return history.push({
             pathname: "/sales/cargo/ListNonUJTCargo",
         });
-    }
+    };
 
     const leftContents = (
         <React.Fragment>
@@ -134,57 +131,22 @@ const OrderDetailUJTCargo = () => {
             <div className="card p-fluid">
                 <Toolbar left={leftContents} />
                 <Fieldset legend=" Input Surat Jalan" className="h-full mt-4">
-                    <div className="field grid">
+                    <div className="formgrid grid">
                         <div className="field col-12 md:col-6">
                             <label htmlFor="name2">No. Schedule</label>
                             <InputText id="NoSchedule" value={NoSchedule} onChange={(e) => setNoSchedule(e.value)} type="text" />
-                        </div>
-                    </div>
-
-                    <div className="field grid">
-                        <div className= " field col-12 md:col-3 ">
-                            <label htmlFor= "calendar">Tanggal Schedule</label>
-                            <Calendar inputId= "calendar" value={TglSchedule} onChange={(e) => setTglSchedule(e.value)} showIcon />
-                        </div>
-                        <div className= " field col-12 md:col-3 ">
-                            <label htmlFor="calendar">Masa Berakhir Schedule</label>
-                            <Calendar inputId="calendar" value={ExpSchedule} onChange={(e) => setExpSchedule(e.value)} showIcon />
-                        </div>
-                    </div>
-
-                    <div className="field grid">
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="loket">Loket</label>
-                            <Dropdown id="Loket" dropdown value={dropdownValue} onChange={(e) => setDropdownValue(e.value)} options={dropdownValues} optionLabel="name" placeholder="A/B/C/D/E" />
-                        </div>
-                    </div>
-
-                    <div className="field grid">
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="shift">Shift</label>
-                            <Dropdown id="Shift" dropdown value={dropdownShift} onChange={(e) => setDropdownShift(e.value)} options={dropdownValuesShifts} optionLabel="name" placeholder="1/2/3" />
-                        </div>
-                    </div>
-
-                    <div className="field grid">
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="jenisorder">Jenis Order</label>
-                            <AutoComplete id="autocomplete" dropdown value={jenisOrder} onChange={(e) => setjenisOrder(e.value)} suggestions={filteredJenisOrder} completeMethod={searchJenisOrder} field="name"></AutoComplete>
-                        </div>
-                    </div>
-
-                    <div className="field grid">
-                        <div className="field col-12 md:col-3">
-                            <label htmlFor="loket">Driver</label>
-                            <AutoComplete id="autocomplete" dropdown value={driver} onChange={(e) => setDriver(e.value)} suggestions={filtereddriver} completeMethod={searchDriver} field="name"></AutoComplete>
                         </div>
                         <div className="field col-12 md:col-3">
                             <label htmlFor="status">Status</label>
                             <Dropdown id="Status" dropdown value={dropdownStatus} onChange={(e) => setDropdownStatus(e.value)} options={dropdownValuesStatus} optionLabel="name" placeholder="Utama/Serep" />
                         </div>
+                        <div className="field col-12 md:col-3">
+                            <label htmlFor="status">Open</label>
+                            <InputSwitch checked={checked1} onChange={(e) => setChecked1(e.value)}/>
+                        </div>
                     </div>
-
-                    <div className="field grid">
+                    
+                    <div className="formgrid grid">
                         <div className="field col-12 md:col-3">
                             <label htmlFor="name3">Nama Pemilik STNK</label>
                             <AutoComplete id="autocomplete" dropdown value={namaSTNK} onChange={(e) => setnamaSTNK(e.value)} suggestions={filterednamaSTNK} completeMethod={searchNamaSTNK} field="name"></AutoComplete>
@@ -195,7 +157,44 @@ const OrderDetailUJTCargo = () => {
                         </div>
                     </div>
 
+                    <div className="formgrid grid">
+                        <div className= " field col-12 md:col-6 ">
+                            <label htmlFor= "calendar">Tanggal Schedule</label>
+                            <Calendar inputId= "calendar" value={TglSchedule} onChange={(e) => setTglSchedule(e.value)} showIcon />
+                        </div>
+                    </div>
+
+                    <div className="formgrid grid">
+                        <div className="field col-12 md:col-2">
+                            <label htmlFor="loket">Loket</label>
+                            <Dropdown id="Loket" dropdown value={dropdownValue} onChange={(e) => setDropdownValue(e.value)} options={dropdownValues} optionLabel="name" placeholder="A/B/C/D/E" />
+                        </div>
+                        <div className="field col-12 md:col-2">
+                            <label htmlFor="shift">Shift</label>
+                            <Dropdown id="Shift" dropdown value={dropdownShift} onChange={(e) => setDropdownShift(e.value)} options={dropdownValuesShifts} optionLabel="name" placeholder="1/2/3" />
+                        </div>
+                        <div className="field col-12 md:col-2">
+                            <label htmlFor="jenisorder">Jenis Order</label>
+                            <AutoComplete id="autocomplete" dropdown value={jenisOrder} onChange={(e) => setjenisOrder(e.value)} suggestions={filteredJenisOrder} completeMethod={searchJenisOrder} field="name"></AutoComplete>
+                        </div>
+                    </div>
+
+                    <div className="formgrid grid">
+                        <div className="field col-12 md:col-4">
+                            <label htmlFor="loket">Driver</label>
+                            <AutoComplete id="autocomplete" dropdown value={driver} onChange={(e) => setDriver(e.value)} suggestions={filtereddriver} completeMethod={searchDriver} field="name"></AutoComplete>
+                        </div>
+                        <div className="field col-12 md:col-2">
+                            <label htmlFor="loket">Alias</label>
+                            <AutoComplete id="autocomplete" dropdown value={driver} onChange={(e) => setDriver(e.value)} suggestions={filtereddriver} completeMethod={searchDriver} field="name"></AutoComplete>
+                        </div>
+                    </div>
+
                     <div className="field grid">
+                        
+                    </div>
+
+                    <div className="formgrid grid">
                         <div className="field col-12 md:col-3">
                             <label htmlFor="calendar">Tanggal GPS</label>
                             <Calendar inputId="calendar" value={TglGPS} onChange={(e) => setTglGPS(e.value)} showIcon />
@@ -205,7 +204,7 @@ const OrderDetailUJTCargo = () => {
                             <Calendar inputId="calendar" value={UpdateGPS} onChange={(e) => setUpdateGPS(e.value)} showIcon />
                         </div>
                     </div>
-                    <div className="field grid">
+                    <div className="formgrid grid">
                         <div className="field col-12 md:col-4">
                             <label htmlFor="reason">Nama Pemilik Rekening</label>
                             <AutoComplete id="autocomplete" dropdown value={namaRekening} onChange={(e) => setnamaRekening(e.value)} suggestions={filterednamaRekening} completeMethod={searchNamaRekening} field="name"></AutoComplete>
